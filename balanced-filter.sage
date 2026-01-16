@@ -10,7 +10,7 @@ AUTHORS: Cam McLeman (University of Michigan-Flint) and Christopher Rasmussen (W
 Comments welcome: crasmussen 'typical email symbol' wesleyan 'typical email punctuation' edu
 """
 
-# we hard-code the construction of possible Tate-Oort numbers (aka "j-vectors") for practical use:
+# We hard-code the construction of possible Tate-Oort numbers (aka "j-vectors") for practical use:
 
 poss_jvec = []
 for e in [1, 2, 3, 4, 6, 8, 12]:
@@ -60,9 +60,9 @@ def trace_frob_power( trace_frob, pow, prime_norm ):
 
 def alt_trace_frob_power( trace_frob, pow, prime_norm ):
     r'''An alternative to the function trace_frob_power(), which instead calculates the roots of the
-        characteristic polynomial explicitly and then calculates the trace of the pow power directly.
+        characteristic polynomial explicitly and then calculates the trace of the pow-th power directly.
 
-        NOTE: when the characteristic polynomial is irreducible, this function is much slower than
+        NOTE: When the characteristic polynomial is irreducible, this function is much slower than
         trace_frob_power(), because a number field construction is required.'''
     QQT.<T> = QQ[]
     char_poly = T^2 - ZZ(trace_frob) * T + ZZ(prime_norm)
@@ -88,7 +88,7 @@ def alt_trace_frob_power( trace_frob, pow, prime_norm ):
 def tate_oort_trace( p, f, jvec ):
     r'''Calculates the expected trace modulo ell for the e-th power of Frobenius when
         the Tate-Oort numbers are in jvec. For a prime of norm q = p^f, this is the expression q^j1 + q^j2,
-        which we require to be congruent to the trace of the e-th power of Frobenius, modulo ell.'''
+        which (for a heavenly elliptic curve) must be congruent to the trace of the e-th power of Frobenius, modulo ell.'''
     q = p ** f
     if len(jvec) != 2:
         raise Exception("jvec is not an acceptable vector of Tate-Oort numbers.")
@@ -112,7 +112,7 @@ def initial_screen( jvec, p0 ):
     for inertial_degree in [1, 2]:
         prime_norm = p0 ** inertial_degree
         for tau in possible_frob_trace( p0, inertial_degree ):
-            # this if block is solely meant as a safety check for the trace of frobenius powers; one
+            # the following if block is solely meant as a safety check for the trace of frobenius powers; one
             # could comment out this block and likely get a much faster execution time. Since
             # execution time is not an issue in this use case (abelian variety of dimension 1, field of definition of degree 2),
             # we leave the safety check on.
@@ -132,7 +132,7 @@ def initial_screen( jvec, p0 ):
     return poss_ell
 
 # using the functions above, we build a dictionary whose keys are Tate-Oort numbers (j1, j2)
-# and whose values are lists of possible primes ell which might admit a heavenly elliptic EllipticCurve
+# and whose values are lists of possible primes ell which might admit a heavenly elliptic curve
 # with unbalanced Tate-Oort numbers (j1, j2)
 
 poss_ell_dict = {}
