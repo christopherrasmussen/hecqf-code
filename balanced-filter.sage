@@ -112,7 +112,7 @@ def initial_screen( jvec, p0 ):
     for inertial_degree in [1, 2]:
         prime_norm = p0 ** inertial_degree
         for tau in possible_frob_trace( p0, inertial_degree ):
-            # the following if block is solely meant as a safety check for the trace of frobenius powers; one
+            # The following if block is solely meant as a safety check for the trace of frobenius powers; one
             # could comment out this block and likely get a much faster execution time. Since
             # execution time is not an issue in this use case (abelian variety of dimension 1, field of definition of degree 2),
             # we leave the safety check on.
@@ -122,7 +122,7 @@ def initial_screen( jvec, p0 ):
                 print("jvec, p0, f: ", jvec, p0, inertial_degree)
             tau_e = trace_frob_power( tau, e, prime_norm )
             special_qty = tau_e - prime_norm ** jvec[0] - prime_norm ** jvec[1]
-            # the special_qty must be zero mod ell, so we collect its prime divisors,
+            # The special_qty must be zero mod ell, so we collect its prime divisors,
             # but we only keep ell > 11 that satisfy gcd(e, ell - 1) | j1.
             poss_ell_for_tau = [ell for ell in prime_divisors(special_qty) if (ell > 11 and jvec[0] % gcd(e, ell - 1) == 0)]
             for ell in poss_ell_for_tau:
@@ -131,7 +131,7 @@ def initial_screen( jvec, p0 ):
     poss_ell.sort()
     return poss_ell
 
-# using the functions above, we build a dictionary whose keys are Tate-Oort numbers (j1, j2)
+# Using the functions above, we build a dictionary whose keys are Tate-Oort numbers (j1, j2)
 # and whose values are lists of possible primes ell which might admit a heavenly elliptic curve
 # with unbalanced Tate-Oort numbers (j1, j2)
 
@@ -141,7 +141,7 @@ for jvec in poss_jvec:
     if len(list_of_ell_for_jvec) > 0:
         poss_ell_dict[ jvec ] = list_of_ell_for_jvec
 
-# the next step will be to eliminate most of the remaining possibilites by checking constraints involving
+# The next step will be to eliminate most of the remaining possibilites by checking constraints involving
 # other small primes p0. Since p0 != ell is required, we (continue to) assume ell > 11 and use only
 # the primes p0 with 2 < p0 <= 11. 
 
@@ -155,7 +155,7 @@ def congruence_check( jvec, ell, p0 ):
 
         holds. Here, e = j1 + j2, and tau_e is the trace of theta^e.
 
-        Returns TRUE if some choice exists; returns FALSE if no choice exists.'''
+        Returns True if some choice exists; returns False if no choice exists.'''
 
     if p0 == ell:
         raise ValueError("The prime p0 must be distinct from ell.")
