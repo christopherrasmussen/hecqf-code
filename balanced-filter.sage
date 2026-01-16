@@ -1,6 +1,13 @@
-"""
-Code to screen for cases where a heavenly elliptic curve could be unbalanced, specifically in the
+r"""
+Code to screen for cases where a heavenly elliptic curve could be *not* balanced, specifically in the
 case where E is defined over a quadratic number field.
+
+REFERENCE: "Heavenly elliptic curves over quadratic fields," 
+           https://arxiv.org/pdf/2410.18389
+
+AUTHORS: Cam McLeman (University of Michigan-Flint) and Christopher Rasmussen (Wesleyan University)
+
+Comments welcome: crasmussen 'typical email symbol' wesleyan 'typical email punctuation' edu
 """
 
 # we hard-code the construction of possible Tate-Oort numbers (aka "j-vectors") for practical use:
@@ -25,7 +32,7 @@ def possible_frob_trace(p, f):
 
 def trace_frob_power( trace_frob, pow, prime_norm ):
     r'''Suppose theta is a Frobenius element for a prime pp of
-        norm prime_norm, and that P(T) is the integer characteristic polyomial
+        norm prime_norm, and that P(T) is the integer characteristic polynomial
         for theta. Let alpha, beta be the complex roots of P(T), so that
 
         trace_frob = alpha + beta.
@@ -106,7 +113,9 @@ def initial_screen( jvec, p0 ):
         prime_norm = p0 ** inertial_degree
         for tau in possible_frob_trace( p0, inertial_degree ):
             # this if block is solely meant as a safety check for the trace of frobenius powers; one
-            # could comment out this block and likely get a much faster execution time.
+            # could comment out this block and likely get a much faster execution time. Since
+            # execution time is not an issue in this use case (abelian variety of dimension 1, field of definition of degree 2),
+            # we leave the safety check on.
             if trace_frob_power( tau, e, prime_norm) != alt_trace_frob_power( tau, e, prime_norm ):
                 print("ERROR CASE:", tau, e, prime_norm)
                 print("trace: ", trace_frob_power( tau, e, prime_norm), "\t alt_trace: ", alt_trace_frob_power( tau, e, prime_norm ))
