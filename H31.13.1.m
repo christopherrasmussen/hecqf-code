@@ -51,6 +51,8 @@ print("Found a root.");
 x0 := rts[1][1];   // the x-coordinate of P
 
 print("Got the x coord.");
+print("x-coord of P is");
+print(x0);
 
 /* Construct the corresponding y-coordinate */
 
