@@ -46,12 +46,18 @@ time Kell := Compositum(K, CyclotomicField(ell));
 
 time rts := Roots(f1, Kell);
 
+print("Found a root.");
+
 x0 := rts[1][1];   // the x-coordinate of P
+
+print("Got the x coord.");
 
 /* Construct the corresponding y-coordinate */
 
 hE := HyperellipticPolynomials(E);
 LHS := Evaluate(hE, x0);
+
+print("calculation towards y coord done");
 
 /* Check that the discriminant of y^2 + y = LHS is a square, and use the square root
    to construct the y-coordinate.
@@ -61,8 +67,12 @@ LHS := Evaluate(hE, x0);
 disc := 1 + 4 * LHS;
 _, sqrDisc := IsSquare(disc);
 
+print("Checked if its a square.");
+
 y0 := (-1 + sqrDisc)/2;
 P := ChangeRing(E, Kell)![x0, y0];
+
+print("Calculated P");
 
 /* Print the point and then check it has order 23. */
 
