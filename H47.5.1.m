@@ -26,7 +26,7 @@ E := EllipticCurve(coeffs);
 
 print "Your curve has bad reduction at ", Factorization(Integers()!Norm(Discriminant(E)));
 
-/* Compute a degree-11 factor of the 47th division polynomial */
+/* Compute a degree-(ell-1)/2 factor of the ell-th division polynomial */
 
 KX<X> := PolynomialRing(K);
 dp, _, _ := KX!DivisionPolynomial(E, ell);

@@ -42,7 +42,7 @@ print "DivisionPolynomial Factor: ", f1;
    point P inside E[23]. */
 
 time Kell := Compositum(K, CyclotomicField(ell));
-time Kell := OptimisedRepresentation(Kell);
+// time Kell := OptimisedRepresentation(Kell);
 
 time rts := Roots(f1, Kell);
 
