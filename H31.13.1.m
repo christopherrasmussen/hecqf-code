@@ -22,6 +22,8 @@ else
 end if;
 
 K<a> := NumberField( minpoly_K );
+Qmu<xi> := CyclotomicField( ell );
+Kmu := Compositum(K, Qmu);
 
 coeffs := [0, 0, 1, 186930*a - 427490, 58571989*a - 135261471];
 E := EllipticCurve(coeffs);
@@ -38,13 +40,7 @@ f1 := fac[1][1];
 
 print "DivisionPolynomial Factor: ", f1;
 
-/* Find a root of f1 over K(\zeta_{23}), which will give the x-coordinate of some
-   point P inside E[23]. */
-
-time Kell := Compositum(K, CyclotomicField(ell));
-// time Kell := OptimisedRepresentation(Kell);
-
-time rts := Roots(f1, Kell);
+time rts := Roots(f1, Kmu);
 
 print("Found a root.");
 
@@ -57,22 +53,23 @@ print(x0);
 /* Construct the corresponding y-coordinate */
 
 hE := HyperellipticPolynomials(E);
-LHS := Evaluate(hE, x0);
+RHS := Evaluate(hE, x0);
+y_disc := 1 + 4 * RHS;
 
 print("calculation towards y coord done");
 
-/* Check that the discriminant of y^2 + y = LHS is a square, and use the square root
-   to construct the y-coordinate.
+/* We build a copy of Kmu which is a relative extension over Qmu */
 
-   Note that the equation of E is of the form y^2 + y = f(x). */
+Kmu_copy := RelativeField( Qmu, Kmu );
 
-disc := 1 + 4 * LHS;
-_, sqrDisc := IsSquare(disc);
+/* Check if y poly discriminant is a square inside Kmu */
 
-print("Checked if its a square.");
+_, y_disc_root := IsSquare( Kmu_copy!y_disc );
 
-y0 := (-1 + sqrDisc)/2;
-P := ChangeRing(E, Kell)![x0, y0];
+y0 := (-1 + y_disc_root)/2;  // should be y-coord of a torsion point.
+coerced_x0 := Kmu_copy!x0; 
+
+P := ChangeRing(E, Kmu_copy)![coerced_x0, y0];
 
 print("Calculated P");
 
