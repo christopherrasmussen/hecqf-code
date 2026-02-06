@@ -69,7 +69,7 @@ P := ChangeRing(E, Kmu_copy)![coerced_x0, y0];
 
 print("Calculated P");
 
-/* Print the point and then check it has order 23. */
+/* Print the point and then check it has order ell. */
 
 print P;
 print ell * P;
