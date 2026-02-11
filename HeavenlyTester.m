@@ -2,10 +2,6 @@
 
 load "curve_data.m";
 
-for i in [1..#curves_db] do
-    CheckHeavenlyCurve(curves_db[i][1], curves_db[i][2], curves_db[i][3]);
-end for;
-
 CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
 
     /*  Expects a triple of data representing an elliptic curve heavenly over a quadratic field K 
@@ -94,3 +90,7 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
     end if;
 
 end function;
+
+for i in [1..#curves_db] do
+    CheckHeavenlyCurve(curves_db[i][1], curves_db[i][2], curves_db[i][3]);
+end for;
