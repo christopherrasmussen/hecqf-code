@@ -11,7 +11,7 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
     */
 
     print "--------------------------------------------------------";
-    printf "Checking Curve: Delta_K=%o, ell=%o\n", Delta_K, ell;
+    printf "Checking Curve: Delta_K = %o, ell = %o \n", Delta_K, ell;
     print "--------------------------------------------------------";
 
     /* 1. Construct K and E */
@@ -34,6 +34,7 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
     E := EllipticCurve(coeffs);
 
     /* 2. Factor the Division Polynomial  */
+
     Qmu<xi> := CyclotomicField( ell );
     Kmu := Compositum(K, Qmu);
     
@@ -52,12 +53,15 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
     end if;
 
     x0 := rts[1][1];
-    print "Found x-coordinate of P.";
+    printf "Found x-coordinate of P: x0 = %o \n", x0;
 
     /* 4. Find y-coordinate for P */
     hE := HyperellipticPolynomials(E);
     RHS := Evaluate(hE, x0);
     y_disc := 1 + 4 * RHS;
+
+    Qmu;
+    Kmu;
 
     /* Build relative field for faster square-checking */
     Kmu_copy := RelativeField( Qmu, Kmu );
@@ -92,5 +96,7 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
 end function;
 
 for i in [1..#curves_db] do
-    CheckHeavenlyCurve(curves_db[i][1], curves_db[i][2], curves_db[i][3]);
+    if 3 lt curves_db[i][2] then
+        CheckHeavenlyCurve(curves_db[i][1], curves_db[i][2], curves_db[i][3]);
+    end if;
 end for;

@@ -14,6 +14,19 @@ AUTHORS: Cam McLeman (University of Michigan-Flint) and Christopher Rasmussen (W
 Comments welcome: crasmussen 'typical email symbol' wesleyan 'typical email punctuation' edu
 """
 
+def preferred_char_poly(Delta, indeterminate=T):
+    r'''
+    For a positive real integer Delta, returns a standardized form
+    for the minimal polynomial of the unique quadratic field K of absolute
+    discriminant Delta, in the specified indeterminate.'''
+
+    if Delta % 4 == 0:
+        return indeterminate^2 - (Delta/4)
+    elif Delta % 4 == 1:
+        return indeterminate^2 - indeterminate - (Delta - 1)/4
+    else:
+        raise Exception("Delta is not the discriminant of a quadratic field.")
+#       
 # Experimentally, default stack size is not sufficient
 
 pari.allocatemem()  
@@ -49,32 +62,35 @@ CM2 = [2, 3, 5, 6, 7, 13, 17, 21, 29, 33, 37, 41, 61, 89]
 # On the number of isomorphism classes of CM elliptic curves defined over a number field, 
 # by Harris Daniels and Álvaro Lozano-Robledo, J. Number Theory 157 (2015) 367--396.
 
-# We now collect data to represent every possible isomorphism 
+# we create a list of discrminants from CM2:
 
-EllipticCurveCM order of class number 2, , with the following structure:
-#   - char_poly is the minimal polynomial for the field of definition K = QQ(a),
-#       chosen in a standard way and such that char_poly(a) == 0.
-#   - 
-#   - Delta_L is the absolute discriminant of the CM field L
-#   - f is the CM conductor of the desired order (e.g., O = ZZ + f * O_L)
-#   - j 
-
-
-
-
-def preferred_char_poly(Delta, indeterminate=T):
-    r'''
-    For a positive real integer Delta, returns a standardized form
-    for the minimal polynomial of the unique quadratic field K of absolute
-    discriminant Delta, in the specified indeterminate.'''
-
-    if Delta % 4 == 0:
-        return indeterminate^2 - (Delta/4)
-    elif:
-        return indeterminate^2 - indeterminate - (Delta - 1)/4
+CM2_disc = []
+for D in CM2:
+    if D%4 != 1:
+        CM2_disc.append( 4*D )
     else:
-        raise Exception("Delta is not the discriminant of a quadratic field.")
+        CM2_disc.append( D )
 
+# We now create the 58 distinct j-invariants corresponding to elliptic curves E with CM
+# by an order of class number 2, in the following form: [ mK, (j0, j1)], where
+#    - K has minimal polynomial mK
+#    - if a is a root of K, then the j-invariant is j0 + j1 * a
+# j-invariants lying in the rational field QQ are not included.
+
+jlist = []
+T = polygen(ZZ, 'T')
+
+for Delta in CM2_disc:
+    mK = preferred_char_poly(Delta, T)
+    K = NumberField( mK, 'a' )
+    # to test rationality, we find the nontrivial element of Gal(K/Q)
+    sigma = K.galois_group().gens()[0]
+    for cm_datum in cm_j_invariants_and_orders(K):
+        j = cm_datum[2]
+        if j != sigma(j):
+            # now sure j is not rational
+            j_data = [mK, j.vector()]
+            jlist.append( j_data )
 
 def cm_disc_to_field_disc_and_conductor(cm_disc, class_no = 2):
     r'''
@@ -82,6 +98,7 @@ def cm_disc_to_field_disc_and_conductor(cm_disc, class_no = 2):
     
     INPUT:   
         - cm_disc, the cm discriminant of some CM order O.
+        - class_no, the specified class number for the order
     OUTPUT:
         - [D, f], where
         - L = QuadraticField(D) is the CM field containing O,
