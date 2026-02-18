@@ -44,6 +44,8 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
     
     f1 := fac[1][1];
 
+    printf "Degree of Div Poly Factor: %o \n", Degree(f1);
+
     /* 3. Find x-coordinate for P */
 
     rts := Roots(f1, Kmu);
@@ -96,7 +98,8 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
 end function;
 
 for i in [1..#curves_db] do
-    if 3 lt curves_db[i][2] then
+    ell := curves_db[i][2];
+    if 3 lt ell and ell lt 13 then
         CheckHeavenlyCurve(curves_db[i][1], curves_db[i][2], curves_db[i][3]);
     end if;
 end for;
