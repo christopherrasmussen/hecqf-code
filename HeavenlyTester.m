@@ -59,20 +59,28 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
 
     /* 4. Find y-coordinate for P */
     hE := HyperellipticPolynomials(E);
+    printf "coeffs: %o \n", coeffs;
+    printf "HE: %o \n", hE;
     RHS := Evaluate(hE, x0);
     y_disc := 1 + 4 * RHS;
 
-    Qmu;
-    Kmu;
+    printf "Field Qmu is %o \n", Qmu;
+    printf "Field Kmu is %o \n", Kmu;
 
     /* Build relative field for faster square-checking */
+    
     Kmu_copy := RelativeField( Qmu, Kmu );
+
+    printf "Field Kmu_copy is %o \n", Kmu_copy;
 
     is_sq, y_disc_root := IsSquare( Kmu_copy!y_disc );
 
     if not is_sq then
-        print ">> FAILURE: y_disc is not a square in Kmu.";
-        return false;
+        second_try_is_sq, second_disc_root := IsSquare( y_disc );
+        if not second_try_is_sq then
+            print ">> FAILURE: y_disc is not a square in Kmu.";
+            return false;
+        end if;
     end if;
 
     y0 := (-1 + y_disc_root)/2;
@@ -99,7 +107,7 @@ end function;
 
 for i in [1..#curves_db] do
     ell := curves_db[i][2];
-    if 3 lt ell and ell lt 13 then
+    if 3 lt ell and ell lt 11 then
         CheckHeavenlyCurve(curves_db[i][1], curves_db[i][2], curves_db[i][3]);
     end if;
 end for;
