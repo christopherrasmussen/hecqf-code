@@ -24,7 +24,7 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
     end if;
 
     K<a> := NumberField( minpoly_K );
-    printf "Field K defined by: %o\n", minpoly_K;
+    // printf "Field K defined by: %o\n", minpoly_K;
 
     coeffs := [];
     for item in raw_coeffs do
@@ -55,23 +55,28 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
     end if;
 
     x0 := rts[1][1];
-    printf "Found x-coordinate of P: x0 = %o \n", x0;
+    print "Found x-coordinate of P.";
 
-    /* 4. Find y-coordinate for P */
-    hE := HyperellipticPolynomials(E);
-    printf "coeffs: %o \n", coeffs;
-    printf "HE: %o \n", hE;
-    RHS := Evaluate(hE, x0);
-    y_disc := 1 + 4 * RHS;
+    /* 4. Find coordinate for P */
+    qE, pE := HyperellipticPolynomials(E);
+    // printf "coeffs: %o \n", coeffs;
+    // printf "qE: %o \n", qE;
+    RHS := Evaluate(qE, x0);
+    LHS := Evaluate(pE, x0);
+    y_disc := LHS^2 + 4 * RHS;
 
-    printf "Field Qmu is %o \n", Qmu;
-    printf "Field Kmu is %o \n", Kmu;
+    // printf "Field Qmu is %o \n", Qmu;
+    // printf "Field Kmu is %o \n", Kmu;
 
     /* Build relative field for faster square-checking */
     
-    Kmu_copy := RelativeField( Qmu, Kmu );
+    if ell gt 2 then
+        Kmu_copy := RelativeField( Qmu, Kmu );
+    else
+        Kmu_copy := Kmu;
+    end if;
 
-    printf "Field Kmu_copy is %o \n", Kmu_copy;
+    // printf "Field Kmu_copy is %o \n", Kmu_copy;
 
     is_sq, y_disc_root := IsSquare( Kmu_copy!y_disc );
 
@@ -83,7 +88,7 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
         end if;
     end if;
 
-    y0 := (-1 + y_disc_root)/2;
+    y0 := (-LHS + y_disc_root)/2;
     coerced_x0 := Kmu_copy!x0; 
 
     /* 6. Verify Computation */
@@ -92,7 +97,7 @@ CheckHeavenlyCurve := function(Delta_K, ell, raw_coeffs)
     check_point := ell * P;
     
     print "Verifying Order...";
-    print "P =", P;
+    // print "P =", P;
     printf "ell * P = %o\n", check_point;
     
     if IsZero(check_point) then
@@ -107,7 +112,7 @@ end function;
 
 for i in [1..#curves_db] do
     ell := curves_db[i][2];
-    if 3 lt ell and ell lt 11 then
+    if 1 lt ell then
         CheckHeavenlyCurve(curves_db[i][1], curves_db[i][2], curves_db[i][3]);
     end if;
 end for;
