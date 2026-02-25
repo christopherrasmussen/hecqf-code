@@ -1,0 +1,590 @@
+> magma -b HeavenlyTester.m                                                 ─╯
+
+Loading "curve_data.m"
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 3 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 7 
+--------------------------------------------------------
+Degree of Div Poly Factor: 3 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 23 
+--------------------------------------------------------
+Degree of Div Poly Factor: 11 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 5, ell = 47 
+--------------------------------------------------------
+Degree of Div Poly Factor: 23 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 8, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 8, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 8, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 8, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 8, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 8, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 8, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 8, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 8, ell = 3 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 8, ell = 11 
+--------------------------------------------------------
+Degree of Div Poly Factor: 5 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 12, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 12, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 12, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 12, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 12, ell = 3 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 13, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 13, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 13, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 13, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 13, ell = 7 
+--------------------------------------------------------
+Degree of Div Poly Factor: 3 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 13, ell = 31 
+--------------------------------------------------------
+Degree of Div Poly Factor: 15 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 17, ell = 3 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 17, ell = 11 
+--------------------------------------------------------
+Degree of Div Poly Factor: 5 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 21, ell = 7 
+--------------------------------------------------------
+Degree of Div Poly Factor: 3 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 24, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 24, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 24, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 24, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 24, ell = 3 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 28, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 28, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 3 
+>> FAILURE: No roots found for this factor in Kmu.
+false
+--------------------------------------------------------
+Checking Curve: Delta_K = 28, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 28, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 28, ell = 7 
+--------------------------------------------------------
+Degree of Div Poly Factor: 3 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 29, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 29, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 29, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 29, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 33, ell = 3 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 33, ell = 11 
+--------------------------------------------------------
+Degree of Div Poly Factor: 5 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 37, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 37, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 37, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 37, ell = 2 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 41, ell = 3 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 61, ell = 7 
+--------------------------------------------------------
+Degree of Div Poly Factor: 3 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+--------------------------------------------------------
+Checking Curve: Delta_K = 89, ell = 3 
+--------------------------------------------------------
+Degree of Div Poly Factor: 1 
+Found x-coordinate of P.
+Point P constructed.
+Verifying Order...
+ell * P = (0 : 1 : 0)
+>> SUCCESS: Point has correct order.
+true
+> 
