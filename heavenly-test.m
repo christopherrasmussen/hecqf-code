@@ -1,0 +1,140 @@
+/* MAGMA script to read in candidate curves and test if they are heavenly */
+
+/* Block giving contact info and request for comments.
+
+*/
+
+// load in candidate curves as isogeny classes
+load "heavenly-candidates-complete.m";
+
+QT<T> := PolynomialRing(Rationals());
+
+sorted_keys := Sort(SetToSequence(Keys(data)));
+
+for Dlnkey in sorted_keys do
+    D := Dlnkey[1];
+    l := Dlnkey[2];
+    n := Dlnkey[3];
+    isog_label := "C(" cat IntegerToString(D) cat ", " cat IntegerToString(l) cat ")." cat IntegerToString(n);
+    printf ">>>>> Candidate class %o...\n", isog_label;
+
+    /* Construct minpoly and then the number field K = Q(a)... */
+    minpoly_coeffs := data[Dlnkey][1];
+    minpoly_K := QT ! minpoly_coeffs;
+    K<a> := NumberField(minpoly_K);
+
+    /* Since D and l are both currently fixed, we can go ahead and compute the 
+       composite extension K(mu_\ell) */
+    
+    Qmu_l<z> := CyclotomicField(l);
+    Kmu_l<xi0> := Compositum(K, Qmu_l);
+
+    /* We need Kmu_l as a relative extension over Qmu_l, 
+       except when l = 2. This is because MAGMA seems to 
+       do better checking whether an element is a square
+       in Kmu_l when it is working with Kmu_l as a 
+       relative field extension over Qmu_l. */
+
+    if l gt 2 then
+        Kmu_l_rel_extn<xi> := RelativeField( Qmu_l, Kmu_l );
+    else
+        Kmu_l_rel_extn<xi> := Kmu_l;
+    end if;
+
+    /* We want a polynomial ring over K available */
+    KX<X> := PolynomialRing(K);
+
+    printf ">> Curves defined over K = Q(a), where a satisfies %o.\n", minpoly_K;
+    printf "      Delta(K/QQ) = %o \n", Discriminant(K);
+    printf "\n";
+
+    ec_list := data[Dlnkey][2];
+
+    for raw_ainvs in ec_list do
+        ainvs := [];
+        for raw_aj in raw_ainvs do
+            Append(~ainvs, K ! raw_aj);
+        end for;
+        E := EllipticCurve(ainvs);
+        Delta_E := Discriminant(E);
+        a_invs := aInvariants(E);
+        prime_support := PrimeDivisors( Integers() ! Norm(Discriminant(E)));
+        if #prime_support gt 1 then
+            print "!!!!!!!! Seriously bogus curve! Bad primes are %o \n", prime_support;
+        end if;
+
+        Phi := DivisionPolynomial(E, l);
+        Phi_all_factors := Factorisation(Phi);
+        Phi_factor := Phi_all_factors[1][1];
+        if Degree(Phi_factor) le 2 then
+            leading_terms := Phi_factor;
+        else
+            leading_terms := Phi_factor - (Phi_factor mod X^(Degree(Phi_factor)-2));
+        end if;
+
+        /* Factorisation appears to sort factors by increasing degree
+           but if there is a bottleneck it may be worth it to ensure
+           Phi_factor is chosen of minimum possible degree */
+
+        // printf "Working with factor %o ...\n", leading_terms;
+
+        /* We look for roots of Phi_factor over K(mu_l) */
+        div_poly_roots := Roots(Phi_factor, Kmu_l_rel_extn);
+        
+        if #div_poly_roots eq 0 then
+            /* If Phi_factor has no roots, exit */
+            print "!!!!!!!!!!!!!!!!!!!!!! No roots of Phi_factor found.";
+        else
+            /* we grab the x-coordinate of a possible torsion point */
+            x0 := div_poly_roots[1][1];
+            // print "Found a root x0 inside K(mu_l)";
+
+            /* There is definitely an l-torsion point of the form
+               (x0, y0) in E[l] with x0 in Kmu_l, we just don't
+               know if y0 in Kmu_l. We grab the hyperelliptic
+               polynomials pE and qE such that E has equation
+
+               E: y^2 + qE(x) * y = pE(x) */
+            
+            pE, qE := HyperellipticPolynomials(E);
+
+            /* Set q0 := qE(x0) and p0 := pE(x0) */
+
+            q0 := Evaluate(qE, x0);
+            p0 := Evaluate(pE, x0);
+
+            /* Now y0 is a root of y^2 + q0*y - p0 == 0, and this
+               quadratic polynomial has discriminant q0^2 + 4p0 */
+            
+            y0_disc := q0^2 + 4 * p0;
+
+            /* we have a root y0 over K(mu_l) precisely if y0_disc is
+               a square in K(mu_l)... */
+            
+            // y_disc_is_square, y_disc_sqrt := IsSquare( Kmu_l_rel_extn ! y0_disc );
+            y_disc_is_square, y_disc_sqrt := IsSquare( y0_disc );
+
+            if y_disc_is_square then
+                /* It appears we have an l-torsion point over K(mu_l). We
+                   build this point P0 = (x0, y0) and verify l * P0 == O on E. */
+
+                y0 := (-q0 + y_disc_sqrt)/2;
+                P0 := ChangeRing(E, Kmu_l_rel_extn) ! [x0, y0];
+                lP0 := l * P0;
+
+                if IsZero(lP0) then
+                    /* For just reporting a torsion point a complex
+                       approximation should suffice. */
+                    
+                    printf "E[l](K(mu_l)) contains (x0,y0) with x0 ~ %o \n", Conjugates(P0[1] : Precision := 12)[1];
+                else
+                    print "Something is seriously wrong; l*P0 != O...";
+                end if;
+
+            else
+                /* y_disc was not a square, so no torsion point found. */
+                print ">> FAILS. No l-torsion point found over K(mu_l).";                
+            end if;
+        end if;
+    end for;
+end for;
