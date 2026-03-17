@@ -10,7 +10,7 @@ AUTHORS: Cam McLeman (University of Michigan-Flint) and Christopher Rasmussen (W
 Comments welcome: crasmussen 'typical email symbol' wesleyan 'typical email punctuation' edu
 """
 
-# We hard-code the construction of possible Tate-Oort numbers (aka "j-vectors") for practical use:
+# We construct all possible Tate-Oort numbers (aka "j-vectors"):
 
 poss_jvec = []
 for e in [1, 2, 3, 4, 6, 8, 12]:
@@ -62,7 +62,7 @@ def alt_trace_frob_power( trace_frob, pow, prime_norm ):
     r'''An alternative to the function trace_frob_power(), which instead calculates the roots of the
         characteristic polynomial explicitly and then calculates the trace of the pow-th power directly.
 
-        NOTE: When the characteristic polynomial is irreducible, this function is much slower than
+        NOTE: When the characteristic polynomial is irreducible, this function is slower than
         trace_frob_power(), because a number field construction is required.'''
     QQT.<T> = QQ[]
     char_poly = T^2 - ZZ(trace_frob) * T + ZZ(prime_norm)

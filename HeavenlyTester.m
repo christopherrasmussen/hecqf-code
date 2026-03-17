@@ -112,7 +112,5 @@ end function;
 
 for i in [1..#curves_db] do
     ell := curves_db[i][2];
-    if 1 lt ell then
-        CheckHeavenlyCurve(curves_db[i][1], curves_db[i][2], curves_db[i][3]);
-    end if;
+    CheckHeavenlyCurve(curves_db[i][1], curves_db[i][2], curves_db[i][3]);
 end for;

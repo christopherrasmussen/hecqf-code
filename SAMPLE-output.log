@@ -1,0 +1,344 @@
+# -------------
+# This is the version of output.log produced by the authors
+# in their own execution cm-heavenly-search.sage
+# -------------
+PARI stack size set to 100000000 bytes, maximum size set to 8000000000
+List of seed curves (one per j-invariant) built in 18.625s.
+Candidate pairs identified. Elapsed time 22.845s
+Heavenly candidates identified. Elapsed time 76.620s.
+Isogeny class #01, labeled (8,11,1), seeded with curve #001.
+ Curve #2 lies in class (8,11,1) -- isogeny took 2.825s to confirm.
+ Curve #3 lies in class (8,11,1) -- isogeny took 0.132s to confirm.
+ Curve #4 lies in class (8,11,1) -- isogeny took 0.160s to confirm.
+Isogeny class #02, labeled (8,3,1), seeded with curve #005.
+ Curve #6 lies in class (8,3,1) -- isogeny took 1.102s to confirm.
+ Curve #7 lies in class (8,3,1) -- isogeny took 0.121s to confirm.
+ Curve #8 lies in class (8,3,1) -- isogeny took 0.126s to confirm.
+Isogeny class #03, labeled (8,2,1), seeded with curve #009.
+ Curve #10 lies in class (8,2,1) -- isogeny took 0.799s to confirm.
+Isogeny class #04, labeled (8,2,2), seeded with curve #011.
+Isogeny class #05, labeled (8,2,3), seeded with curve #012.
+ Curve #13 lies in class (8,2,2) -- isogeny took 0.869s to confirm.
+ Curve #14 lies in class (8,2,3) -- isogeny took 1.021s to confirm.
+Isogeny class #06, labeled (8,2,4), seeded with curve #015.
+ Curve #16 lies in class (8,2,4) -- isogeny took 1.051s to confirm.
+ Curve #17 lies in class (8,2,1) -- isogeny took 0.385s to confirm.
+ Curve #18 lies in class (8,2,1) -- isogeny took 0.382s to confirm.
+ Curve #19 lies in class (8,2,2) -- isogeny took 1.484s to confirm.
+ Curve #20 lies in class (8,2,3) -- isogeny took 0.424s to confirm.
+ Curve #21 lies in class (8,2,2) -- isogeny took 0.634s to confirm.
+ Curve #22 lies in class (8,2,3) -- isogeny took 0.431s to confirm.
+ Curve #23 lies in class (8,2,4) -- isogeny took 0.758s to confirm.
+ Curve #24 lies in class (8,2,4) -- isogeny took 0.433s to confirm.
+Isogeny class #07, labeled (8,2,5), seeded with curve #025.
+ Curve #26 lies in class (8,2,5) -- isogeny took 1.249s to confirm.
+Isogeny class #08, labeled (8,2,6), seeded with curve #027.
+Isogeny class #09, labeled (8,2,7), seeded with curve #028.
+ Curve #29 lies in class (8,2,6) -- isogeny took 1.461s to confirm.
+ Curve #30 lies in class (8,2,7) -- isogeny took 0.936s to confirm.
+Isogeny class #10, labeled (8,2,8), seeded with curve #031.
+ Curve #32 lies in class (8,2,8) -- isogeny took 1.413s to confirm.
+ Curve #33 lies in class (8,2,5) -- isogeny took 0.465s to confirm.
+ Curve #34 lies in class (8,2,5) -- isogeny took 0.474s to confirm.
+ Curve #35 lies in class (8,2,6) -- isogeny took 0.976s to confirm.
+ Curve #36 lies in class (8,2,7) -- isogeny took 0.715s to confirm.
+ Curve #37 lies in class (8,2,6) -- isogeny took 0.467s to confirm.
+ Curve #38 lies in class (8,2,7) -- isogeny took 0.747s to confirm.
+ Curve #39 lies in class (8,2,8) -- isogeny took 0.765s to confirm.
+ Curve #40 lies in class (8,2,8) -- isogeny took 0.426s to confirm.
+Isogeny class #11, labeled (12,3,1), seeded with curve #041.
+ Curve #42 lies in class (12,3,1) -- isogeny took 1.795s to confirm.
+ Curve #43 lies in class (12,3,1) -- isogeny took 0.080s to confirm.
+ Curve #44 lies in class (12,3,1) -- isogeny took 1.190s to confirm.
+Isogeny class #12, labeled (12,2,1), seeded with curve #045.
+ Curve #46 lies in class (12,2,1) -- isogeny took 1.909s to confirm.
+Isogeny class #13, labeled (12,2,2), seeded with curve #047.
+Isogeny class #14, labeled (12,2,3), seeded with curve #048.
+ Curve #49 lies in class (12,2,2) -- isogeny took 2.220s to confirm.
+ Curve #50 lies in class (12,2,3) -- isogeny took 2.359s to confirm.
+Isogeny class #15, labeled (12,2,4), seeded with curve #051.
+ Curve #52 lies in class (12,2,4) -- isogeny took 2.595s to confirm.
+Isogeny class #16, labeled (12,3,2), seeded with curve #053.
+ Curve #54 lies in class (12,3,2) -- isogeny took 0.434s to confirm.
+Isogeny class #17, labeled (12,3,3), seeded with curve #055.
+Isogeny class #18, labeled (12,3,4), seeded with curve #056.
+ Curve #57 lies in class (12,3,3) -- isogeny took 0.386s to confirm.
+ Curve #58 lies in class (12,3,4) -- isogeny took 0.397s to confirm.
+Isogeny class #19, labeled (12,3,5), seeded with curve #059.
+ Curve #60 lies in class (12,3,5) -- isogeny took 0.348s to confirm.
+ Curve #61 lies in class (12,2,1) -- isogeny took 0.205s to confirm.
+ Curve #62 lies in class (12,2,1) -- isogeny took 1.719s to confirm.
+ Curve #63 lies in class (12,2,2) -- isogeny took 0.198s to confirm.
+ Curve #64 lies in class (12,2,3) -- isogeny took 0.179s to confirm.
+ Curve #65 lies in class (12,2,2) -- isogeny took 1.538s to confirm.
+ Curve #66 lies in class (12,2,3) -- isogeny took 1.651s to confirm.
+ Curve #67 lies in class (12,2,4) -- isogeny took 0.207s to confirm.
+ Curve #68 lies in class (12,2,4) -- isogeny took 1.714s to confirm.
+ Curve #69 lies in class (12,3,2) -- isogeny took 0.206s to confirm.
+ Curve #70 lies in class (12,3,2) -- isogeny took 0.386s to confirm.
+ Curve #71 lies in class (12,3,3) -- isogeny took 0.188s to confirm.
+ Curve #72 lies in class (12,3,4) -- isogeny took 0.183s to confirm.
+ Curve #73 lies in class (12,3,3) -- isogeny took 0.341s to confirm.
+ Curve #74 lies in class (12,3,4) -- isogeny took 0.355s to confirm.
+ Curve #75 lies in class (12,3,5) -- isogeny took 0.180s to confirm.
+ Curve #76 lies in class (12,3,5) -- isogeny took 0.363s to confirm.
+Isogeny class #20, labeled (5,47,1), seeded with curve #077.
+ Curve #78 lies in class (5,47,1) -- isogeny took 5.823s to confirm.
+ Curve #79 lies in class (5,47,1) -- isogeny took 0.182s to confirm.
+ Curve #80 lies in class (5,47,1) -- isogeny took 0.537s to confirm.
+Isogeny class #21, labeled (5,23,1), seeded with curve #081.
+ Curve #82 lies in class (5,23,1) -- isogeny took 2.009s to confirm.
+ Curve #83 lies in class (5,23,1) -- isogeny took 0.213s to confirm.
+ Curve #84 lies in class (5,23,1) -- isogeny took 0.180s to confirm.
+Isogeny class #22, labeled (5,2,1), seeded with curve #085.
+Isogeny class #23, labeled (5,2,2), seeded with curve #086.
+Isogeny class #24, labeled (5,2,3), seeded with curve #087.
+ Curve #88 lies in class (5,2,2) -- isogeny took 1.635s to confirm.
+Isogeny class #25, labeled (5,2,4), seeded with curve #089.
+ Curve #90 lies in class (5,2,1) -- isogeny took 1.610s to confirm.
+ Curve #91 lies in class (5,2,4) -- isogeny took 1.339s to confirm.
+ Curve #92 lies in class (5,2,3) -- isogeny took 1.336s to confirm.
+ Curve #93 lies in class (5,2,1) -- isogeny took 0.115s to confirm.
+ Curve #94 lies in class (5,2,2) -- isogeny took 0.095s to confirm.
+ Curve #95 lies in class (5,2,3) -- isogeny took 0.108s to confirm.
+ Curve #96 lies in class (5,2,2) -- isogeny took 0.079s to confirm.
+ Curve #97 lies in class (5,2,4) -- isogeny took 0.092s to confirm.
+ Curve #98 lies in class (5,2,1) -- isogeny took 0.112s to confirm.
+ Curve #99 lies in class (5,2,4) -- isogeny took 0.088s to confirm.
+ Curve #100 lies in class (5,2,3) -- isogeny took 0.082s to confirm.
+Isogeny class #26, labeled (5,7,1), seeded with curve #101.
+ Curve #102 lies in class (5,7,1) -- isogeny took 1.621s to confirm.
+ Curve #103 lies in class (5,7,1) -- isogeny took 0.099s to confirm.
+ Curve #104 lies in class (5,7,1) -- isogeny took 0.110s to confirm.
+Isogeny class #27, labeled (5,2,5), seeded with curve #105.
+ Curve #106 lies in class (5,2,5) -- isogeny took 0.211s to confirm.
+Isogeny class #28, labeled (5,2,6), seeded with curve #107.
+Isogeny class #29, labeled (5,2,7), seeded with curve #108.
+ Curve #109 lies in class (5,2,6) -- isogeny took 0.212s to confirm.
+ Curve #110 lies in class (5,2,7) -- isogeny took 0.234s to confirm.
+Isogeny class #30, labeled (5,2,8), seeded with curve #111.
+ Curve #112 lies in class (5,2,8) -- isogeny took 0.177s to confirm.
+ Curve #113 lies in class (5,2,7) -- isogeny took 0.121s to confirm.
+ Curve #114 lies in class (5,2,7) -- isogeny took 1.283s to confirm.
+ Curve #115 lies in class (5,2,8) -- isogeny took 0.112s to confirm.
+ Curve #116 lies in class (5,2,5) -- isogeny took 0.118s to confirm.
+ Curve #117 lies in class (5,2,8) -- isogeny took 1.311s to confirm.
+ Curve #118 lies in class (5,2,5) -- isogeny took 1.378s to confirm.
+ Curve #119 lies in class (5,2,6) -- isogeny took 0.110s to confirm.
+ Curve #120 lies in class (5,2,6) -- isogeny took 1.320s to confirm.
+Isogeny class #31, labeled (5,3,1), seeded with curve #121.
+ Curve #122 lies in class (5,3,1) -- isogeny took 2.200s to confirm.
+ Curve #123 lies in class (5,3,1) -- isogeny took 0.115s to confirm.
+ Curve #124 lies in class (5,3,1) -- isogeny took 0.108s to confirm.
+ Curve #125 lies in class (5,3,1) -- isogeny took 1.440s to confirm.
+ Curve #126 lies in class (5,3,1) -- isogeny took 1.339s to confirm.
+ Curve #127 lies in class (5,3,1) -- isogeny took 0.146s to confirm.
+ Curve #128 lies in class (5,3,1) -- isogeny took 1.287s to confirm.
+Isogeny class #32, labeled (24,2,1), seeded with curve #129.
+Isogeny class #33, labeled (24,2,2), seeded with curve #130.
+ Curve #131 lies in class (24,2,1) -- isogeny took 2.438s to confirm.
+Isogeny class #34, labeled (24,2,3), seeded with curve #132.
+ Curve #133 lies in class (24,2,2) -- isogeny took 2.012s to confirm.
+Isogeny class #35, labeled (24,2,4), seeded with curve #134.
+ Curve #135 lies in class (24,2,3) -- isogeny took 2.592s to confirm.
+ Curve #136 lies in class (24,2,4) -- isogeny took 1.757s to confirm.
+Isogeny class #36, labeled (24,3,1), seeded with curve #137.
+Isogeny class #37, labeled (24,3,2), seeded with curve #138.
+ Curve #139 lies in class (24,3,1) -- isogeny took 0.379s to confirm.
+Isogeny class #38, labeled (24,3,3), seeded with curve #140.
+ Curve #141 lies in class (24,3,2) -- isogeny took 0.397s to confirm.
+Isogeny class #39, labeled (24,3,4), seeded with curve #142.
+ Curve #143 lies in class (24,3,3) -- isogeny took 0.366s to confirm.
+ Curve #144 lies in class (24,3,4) -- isogeny took 0.422s to confirm.
+ Curve #145 lies in class (24,2,1) -- isogeny took 1.554s to confirm.
+ Curve #146 lies in class (24,2,2) -- isogeny took 1.341s to confirm.
+ Curve #147 lies in class (24,2,1) -- isogeny took 0.115s to confirm.
+ Curve #148 lies in class (24,2,3) -- isogeny took 1.098s to confirm.
+ Curve #149 lies in class (24,2,2) -- isogeny took 0.089s to confirm.
+ Curve #150 lies in class (24,2,4) -- isogeny took 1.451s to confirm.
+ Curve #151 lies in class (24,2,3) -- isogeny took 0.094s to confirm.
+ Curve #152 lies in class (24,2,4) -- isogeny took 0.082s to confirm.
+ Curve #153 lies in class (24,3,1) -- isogeny took 0.377s to confirm.
+ Curve #154 lies in class (24,3,2) -- isogeny took 0.340s to confirm.
+ Curve #155 lies in class (24,3,1) -- isogeny took 0.087s to confirm.
+ Curve #156 lies in class (24,3,3) -- isogeny took 0.289s to confirm.
+ Curve #157 lies in class (24,3,2) -- isogeny took 0.099s to confirm.
+ Curve #158 lies in class (24,3,4) -- isogeny took 0.332s to confirm.
+ Curve #159 lies in class (24,3,3) -- isogeny took 0.092s to confirm.
+ Curve #160 lies in class (24,3,4) -- isogeny took 0.112s to confirm.
+Isogeny class #40, labeled (28,2,1), seeded with curve #161.
+ Curve #162 lies in class (28,2,1) -- isogeny took 3.014s to confirm.
+Isogeny class #41, labeled (28,2,2), seeded with curve #163.
+ Curve #164 lies in class (28,2,2) -- isogeny took 3.138s to confirm.
+Isogeny class #42, labeled (28,7,1), seeded with curve #165.
+Isogeny class #43, labeled (28,7,2), seeded with curve #166.
+ Curve #167 lies in class (28,7,1) -- isogeny took 2.904s to confirm.
+ Curve #168 lies in class (28,7,2) -- isogeny took 0.293s to confirm.
+Isogeny class #44, labeled (28,7,3), seeded with curve #169.
+Isogeny class #45, labeled (28,7,4), seeded with curve #170.
+ Curve #171 lies in class (28,7,3) -- isogeny took 0.266s to confirm.
+ Curve #172 lies in class (28,7,4) -- isogeny took 3.554s to confirm.
+Isogeny class #46, labeled (28,7,5), seeded with curve #173.
+ Curve #174 lies in class (28,7,5) -- isogeny took 3.579s to confirm.
+ Curve #175 lies in class (28,2,1) -- isogeny took 0.164s to confirm.
+ Curve #176 lies in class (28,2,1) -- isogeny took 1.562s to confirm.
+ Curve #177 lies in class (28,2,2) -- isogeny took 0.102s to confirm.
+ Curve #178 lies in class (28,2,2) -- isogeny took 1.127s to confirm.
+ Curve #179 lies in class (28,7,1) -- isogeny took 0.207s to confirm.
+ Curve #180 lies in class (28,7,2) -- isogeny took 0.106s to confirm.
+ Curve #181 lies in class (28,7,1) -- isogeny took 1.440s to confirm.
+ Curve #182 lies in class (28,7,2) -- isogeny took 0.328s to confirm.
+ Curve #183 lies in class (28,7,3) -- isogeny took 0.093s to confirm.
+ Curve #184 lies in class (28,7,4) -- isogeny took 0.094s to confirm.
+ Curve #185 lies in class (28,7,3) -- isogeny took 0.268s to confirm.
+ Curve #186 lies in class (28,7,4) -- isogeny took 1.089s to confirm.
+ Curve #187 lies in class (28,7,5) -- isogeny took 0.095s to confirm.
+ Curve #188 lies in class (28,7,5) -- isogeny took 1.109s to confirm.
+Isogeny class #47, labeled (13,31,1), seeded with curve #189.
+ Curve #190 lies in class (13,31,1) -- isogeny took 4.821s to confirm.
+ Curve #191 lies in class (13,31,1) -- isogeny took 0.284s to confirm.
+ Curve #192 lies in class (13,31,1) -- isogeny took 0.257s to confirm.
+Isogeny class #48, labeled (13,7,1), seeded with curve #193.
+ Curve #194 lies in class (13,7,1) -- isogeny took 1.766s to confirm.
+ Curve #195 lies in class (13,7,1) -- isogeny took 0.111s to confirm.
+ Curve #196 lies in class (13,7,1) -- isogeny took 0.085s to confirm.
+Isogeny class #49, labeled (13,2,1), seeded with curve #197.
+ Curve #198 lies in class (13,2,1) -- isogeny took 0.203s to confirm.
+Isogeny class #50, labeled (13,2,2), seeded with curve #199.
+Isogeny class #51, labeled (13,2,3), seeded with curve #200.
+ Curve #201 lies in class (13,2,2) -- isogeny took 0.231s to confirm.
+ Curve #202 lies in class (13,2,3) -- isogeny took 0.200s to confirm.
+Isogeny class #52, labeled (13,2,4), seeded with curve #203.
+ Curve #204 lies in class (13,2,4) -- isogeny took 0.243s to confirm.
+ Curve #205 lies in class (13,2,3) -- isogeny took 1.578s to confirm.
+ Curve #206 lies in class (13,2,3) -- isogeny took 0.078s to confirm.
+ Curve #207 lies in class (13,2,4) -- isogeny took 1.446s to confirm.
+ Curve #208 lies in class (13,2,1) -- isogeny took 1.420s to confirm.
+ Curve #209 lies in class (13,2,4) -- isogeny took 0.065s to confirm.
+ Curve #210 lies in class (13,2,1) -- isogeny took 0.063s to confirm.
+ Curve #211 lies in class (13,2,2) -- isogeny took 1.417s to confirm.
+ Curve #212 lies in class (13,2,2) -- isogeny took 0.069s to confirm.
+Isogeny class #53, labeled (17,11,1), seeded with curve #213.
+ Curve #214 lies in class (17,11,1) -- isogeny took 2.671s to confirm.
+ Curve #215 lies in class (17,11,1) -- isogeny took 0.128s to confirm.
+ Curve #216 lies in class (17,11,1) -- isogeny took 0.098s to confirm.
+Isogeny class #54, labeled (17,3,1), seeded with curve #217.
+ Curve #218 lies in class (17,3,1) -- isogeny took 1.082s to confirm.
+ Curve #219 lies in class (17,3,1) -- isogeny took 0.118s to confirm.
+ Curve #220 lies in class (17,3,1) -- isogeny took 0.117s to confirm.
+Isogeny class #55, labeled (21,7,1), seeded with curve #221.
+ Curve #222 lies in class (21,7,1) -- isogeny took 2.275s to confirm.
+ Curve #223 lies in class (21,7,1) -- isogeny took 1.299s to confirm.
+ Curve #224 lies in class (21,7,1) -- isogeny took 0.087s to confirm.
+Isogeny class #56, labeled (29,2,1), seeded with curve #225.
+Isogeny class #57, labeled (29,2,2), seeded with curve #226.
+Isogeny class #58, labeled (29,2,3), seeded with curve #227.
+ Curve #228 lies in class (29,2,2) -- isogeny took 4.228s to confirm.
+Isogeny class #59, labeled (29,2,4), seeded with curve #229.
+ Curve #230 lies in class (29,2,1) -- isogeny took 1.463s to confirm.
+ Curve #231 lies in class (29,2,4) -- isogeny took 1.408s to confirm.
+ Curve #232 lies in class (29,2,3) -- isogeny took 1.498s to confirm.
+ Curve #233 lies in class (29,2,2) -- isogeny took 0.166s to confirm.
+ Curve #234 lies in class (29,2,1) -- isogeny took 0.172s to confirm.
+ Curve #235 lies in class (29,2,4) -- isogeny took 0.192s to confirm.
+ Curve #236 lies in class (29,2,1) -- isogeny took 0.092s to confirm.
+ Curve #237 lies in class (29,2,3) -- isogeny took 0.153s to confirm.
+ Curve #238 lies in class (29,2,2) -- isogeny took 0.118s to confirm.
+ Curve #239 lies in class (29,2,3) -- isogeny took 0.075s to confirm.
+ Curve #240 lies in class (29,2,4) -- isogeny took 0.084s to confirm.
+Isogeny class #60, labeled (33,3,1), seeded with curve #241.
+Isogeny class #61, labeled (33,3,2), seeded with curve #242.
+ Curve #243 lies in class (33,3,2) -- isogeny took 2.057s to confirm.
+Isogeny class #62, labeled (33,3,3), seeded with curve #244.
+Isogeny class #63, labeled (33,3,4), seeded with curve #245.
+ Curve #246 lies in class (33,3,1) -- isogeny took 1.719s to confirm.
+Isogeny class #64, labeled (33,3,5), seeded with curve #247.
+Isogeny class #65, labeled (33,3,6), seeded with curve #248.
+ Curve #249 lies in class (33,3,5) -- isogeny took 1.349s to confirm.
+ Curve #250 lies in class (33,3,6) -- isogeny took 1.626s to confirm.
+Isogeny class #66, labeled (33,3,7), seeded with curve #251.
+ Curve #252 lies in class (33,3,3) -- isogeny took 1.911s to confirm.
+ Curve #253 lies in class (33,3,4) -- isogeny took 1.732s to confirm.
+Isogeny class #67, labeled (33,3,8), seeded with curve #254.
+ Curve #255 lies in class (33,3,8) -- isogeny took 1.910s to confirm.
+ Curve #256 lies in class (33,3,7) -- isogeny took 1.638s to confirm.
+Isogeny class #68, labeled (33,11,1), seeded with curve #257.
+Isogeny class #69, labeled (33,11,2), seeded with curve #258.
+Isogeny class #70, labeled (33,11,3), seeded with curve #259.
+ Curve #260 lies in class (33,11,2) -- isogeny took 1.623s to confirm.
+ Curve #261 lies in class (33,11,3) -- isogeny took 0.370s to confirm.
+Isogeny class #71, labeled (33,11,4), seeded with curve #262.
+Isogeny class #72, labeled (33,11,5), seeded with curve #263.
+ Curve #264 lies in class (33,11,1) -- isogeny took 0.382s to confirm.
+Isogeny class #73, labeled (33,11,6), seeded with curve #265.
+Isogeny class #74, labeled (33,11,7), seeded with curve #266.
+ Curve #267 lies in class (33,11,6) -- isogeny took 0.293s to confirm.
+ Curve #268 lies in class (33,11,7) -- isogeny took 0.328s to confirm.
+Isogeny class #75, labeled (33,11,8), seeded with curve #269.
+ Curve #270 lies in class (33,11,4) -- isogeny took 0.345s to confirm.
+ Curve #271 lies in class (33,11,5) -- isogeny took 0.340s to confirm.
+Isogeny class #76, labeled (33,11,9), seeded with curve #272.
+ Curve #273 lies in class (33,11,9) -- isogeny took 0.343s to confirm.
+ Curve #274 lies in class (33,11,8) -- isogeny took 0.347s to confirm.
+ Curve #275 lies in class (33,3,8) -- isogeny took 1.735s to confirm.
+ Curve #276 lies in class (33,3,7) -- isogeny took 1.571s to confirm.
+ Curve #277 lies in class (33,3,7) -- isogeny took 0.145s to confirm.
+ Curve #278 lies in class (33,3,6) -- isogeny took 1.570s to confirm.
+ Curve #279 lies in class (33,3,5) -- isogeny took 1.529s to confirm.
+ Curve #280 lies in class (33,3,8) -- isogeny took 0.137s to confirm.
+ Curve #281 lies in class (33,3,4) -- isogeny took 1.620s to confirm.
+ Curve #282 lies in class (33,3,3) -- isogeny took 1.783s to confirm.
+ Curve #283 lies in class (33,3,4) -- isogeny took 0.163s to confirm.
+ Curve #284 lies in class (33,3,3) -- isogeny took 0.187s to confirm.
+ Curve #285 lies in class (33,3,2) -- isogeny took 1.537s to confirm.
+ Curve #286 lies in class (33,3,6) -- isogeny took 0.166s to confirm.
+ Curve #287 lies in class (33,3,5) -- isogeny took 0.100s to confirm.
+ Curve #288 lies in class (33,3,1) -- isogeny took 1.674s to confirm.
+ Curve #289 lies in class (33,3,1) -- isogeny took 0.106s to confirm.
+ Curve #290 lies in class (33,3,2) -- isogeny took 0.166s to confirm.
+ Curve #291 lies in class (33,11,9) -- isogeny took 0.290s to confirm.
+ Curve #292 lies in class (33,11,2) -- isogeny took 1.488s to confirm.
+ Curve #293 lies in class (33,11,8) -- isogeny took 0.366s to confirm.
+ Curve #294 lies in class (33,11,8) -- isogeny took 0.123s to confirm.
+ Curve #295 lies in class (33,11,7) -- isogeny took 0.320s to confirm.
+ Curve #296 lies in class (33,11,6) -- isogeny took 0.349s to confirm.
+ Curve #297 lies in class (33,11,9) -- isogeny took 0.145s to confirm.
+ Curve #298 lies in class (33,11,2) -- isogeny took 0.114s to confirm.
+ Curve #299 lies in class (33,11,5) -- isogeny took 0.346s to confirm.
+ Curve #300 lies in class (33,11,4) -- isogeny took 0.330s to confirm.
+ Curve #301 lies in class (33,11,5) -- isogeny took 0.153s to confirm.
+ Curve #302 lies in class (33,11,4) -- isogeny took 0.195s to confirm.
+ Curve #303 lies in class (33,11,3) -- isogeny took 0.325s to confirm.
+ Curve #304 lies in class (33,11,7) -- isogeny took 0.173s to confirm.
+ Curve #305 lies in class (33,11,6) -- isogeny took 0.106s to confirm.
+ Curve #306 lies in class (33,11,1) -- isogeny took 0.330s to confirm.
+ Curve #307 lies in class (33,11,1) -- isogeny took 0.104s to confirm.
+ Curve #308 lies in class (33,11,3) -- isogeny took 0.159s to confirm.
+Isogeny class #77, labeled (37,2,1), seeded with curve #309.
+ Curve #310 lies in class (37,2,1) -- isogeny took 25.341s to confirm.
+Isogeny class #78, labeled (37,2,2), seeded with curve #311.
+Isogeny class #79, labeled (37,2,3), seeded with curve #312.
+ Curve #313 lies in class (37,2,2) -- isogeny took 19.977s to confirm.
+ Curve #314 lies in class (37,2,3) -- isogeny took 22.697s to confirm.
+Isogeny class #80, labeled (37,2,4), seeded with curve #315.
+ Curve #316 lies in class (37,2,4) -- isogeny took 20.004s to confirm.
+ Curve #317 lies in class (37,2,3) -- isogeny took 0.084s to confirm.
+ Curve #318 lies in class (37,2,3) -- isogeny took 20.679s to confirm.
+ Curve #319 lies in class (37,2,4) -- isogeny took 0.083s to confirm.
+ Curve #320 lies in class (37,2,1) -- isogeny took 0.088s to confirm.
+ Curve #321 lies in class (37,2,4) -- isogeny took 18.244s to confirm.
+ Curve #322 lies in class (37,2,1) -- isogeny took 20.801s to confirm.
+ Curve #323 lies in class (37,2,2) -- isogeny took 0.099s to confirm.
+ Curve #324 lies in class (37,2,2) -- isogeny took 18.594s to confirm.
+Isogeny class #81, labeled (41,3,1), seeded with curve #325.
+ Curve #326 lies in class (41,3,1) -- isogeny took 7.107s to confirm.
+ Curve #327 lies in class (41,3,1) -- isogeny took 1.011s to confirm.
+ Curve #328 lies in class (41,3,1) -- isogeny took 0.093s to confirm.
+Isogeny class #82, labeled (61,7,1), seeded with curve #329.
+ Curve #330 lies in class (61,7,1) -- isogeny took 271.117s to confirm.
+ Curve #331 lies in class (61,7,1) -- isogeny took 234.364s to confirm.
+ Curve #332 lies in class (61,7,1) -- isogeny took 0.151s to confirm.
+Isogeny class #83, labeled (89,3,1), seeded with curve #333.
+ Curve #334 lies in class (89,3,1) -- isogeny took 1644.251s to confirm.
+ Curve #335 lies in class (89,3,1) -- isogeny took 1382.426s to confirm.
+ Curve #336 lies in class (89,3,1) -- isogeny took 0.125s to confirm.
