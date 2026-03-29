@@ -2,7 +2,7 @@ r"""
 Code to screen for cases where a heavenly elliptic curve could be *not* balanced, specifically in the
 case where E is defined over a quadratic number field.
 
-REFERENCE: "Heavenly elliptic curves over quadratic fields," 
+REFERENCE: "Heavenly elliptic curves over quadratic fields,"
            https://arxiv.org/pdf/2410.18389
 
 AUTHORS: Cam McLeman (University of Michigan-Flint) and Christopher Rasmussen (Wesleyan University)
@@ -47,7 +47,7 @@ def trace_frob_power( trace_frob, pow, prime_norm ):
     # we use two recursions. First, if pow is even, we can work with pow/2.
     if pow % 2 == 0:
         # We use the identity (a^{2m} + b^{2m}) = (a^m + b^m)^2 - 2(ab)^m
-        half_pow = pow/2
+        half_pow = pow // 2
         return trace_frob_power( trace_frob, half_pow, prime_norm )**2 - 2 * prime_norm ** half_pow
     # otherwise, use a simpler recursion
     elif pow > 1:
@@ -78,12 +78,11 @@ def alt_trace_frob_power( trace_frob, pow, prime_norm ):
     else:
         # char poly is irreducible.
         K.<xi> = NumberField(char_poly)
-        KT.<T> = K[]
+        KT.<T0> = K[]
         char_poly_over_K = KT(char_poly)
         alpha = char_poly_over_K.roots()[0][0]
         beta = char_poly_over_K.roots()[1][0]
         return ZZ(alpha ** pow + beta ** pow)
-    raise ValueError("You shouldn't be here; check input.")
 
 def tate_oort_trace( p, f, jvec ):
     r'''Calculates the expected trace modulo ell for the e-th power of Frobenius when
@@ -141,17 +140,17 @@ for jvec in poss_jvec:
     if len(list_of_ell_for_jvec) > 0:
         poss_ell_dict[ jvec ] = list_of_ell_for_jvec
 
-# The next step will be to eliminate most of the remaining possibilites by checking constraints involving
+# The next step will be to eliminate most of the remaining possibilities by checking constraints involving
 # other small primes p0. Since p0 != ell is required, we (continue to) assume ell > 11 and use only
-# the primes p0 with 2 < p0 <= 11. 
+# the primes p0 with 2 < p0 <= 11.
 
 def congruence_check( jvec, ell, p0 ):
     r'''Given a vector jvec of Tate-Oort numbers, a prime ell, and an auxiliary prime p0 != ell,
         let theta be a Frobenius for a prime above p0. This function checks whether there is any
         possible choice for tau, the trace of theta, and f, the inertia degree of a prime over p0,
-        such that the congruence 
+        such that the congruence
 
-            tau_e - q ** j1 - q ** j2 == 0 (modulo ell) 
+            tau_e - q ** j1 - q ** j2 == 0 (modulo ell)
 
         holds. Here, e = j1 + j2, and tau_e is the trace of theta^e.
 
@@ -192,6 +191,6 @@ for p0 in [3, 5, 7, 11]:
 print("The remaining unbalanced cases with ell > 11 are as follows. \n")
 
 print("Tate-Oort Numbers  Possible ell > 11")
-print("-----------------  -----------------")   
+print("-----------------  -----------------")
 for jvec in poss_ell_dict:
     print( str(jvec).rjust(13), "      ", poss_ell_dict[ jvec ] )

@@ -81,20 +81,27 @@ def reduce_discriminant_by_qtwist(E0, l):
     return (twist_flag, E1)
 
 # The calculation, especially the sort into isogeny classes, is
-# quite lengthy. Progress is written to the text file
+# quite lengthy. It is recommended to port output to a file,
+# e.g., the following code in a Juptyer cell will load and
+# execute this code, while writing progress to output.log:
 #
-# output.log
-#
-# in the present directory while running. If the calculation
-# completes, results (all candidate CM curves that might
-# be heavenly, up to isomorphism over their base fields)
-# is written to the file
+#### Jupyter cell (watch output.log after execute)
+# import sys
+# sys.stdout = open("output.log", "w")
+# load("cm-heavenly-search.sage")
+# 
+# When the code completes, it writes relevant data to two
+# files in the current directory:
 #
 # heavenly-candidates-complete.sage
+# heavenly-candidates-complete.m
 #
-# also in the present directory. On a basic (paid)
-# CoCalc account in Spring 2026, this calculation had
-# a run-time of ~2 hours.
+#
+# The same data is written to both files; the .sage file is readable
+# by SageMath, the .m file is readable by MAGMA 
+#
+# On a basic paid CoCalc account in Spring 2026, 
+# this calculation had a run-time of 1.5~2 hours.
 #
 # Here is a brief overview of the strategy.
 #
@@ -468,8 +475,8 @@ for E, l in HeavenlyCandidates:
         print(f"!!!!!!!!!! Curve is {E}, l is {l}, but E is also bad at {S_E}.", flush=True)
     if (l, D) not in CandidateIsogenyClass:
         # this is the first curve for (l, D), and we start a new class with it.
-        # (Note the double list [[E]]; this is intentional; we are seeding class
-        # (l, D)[0] with its first curve.)
+        # Note the double list [[E]]; this is intentional; we are seeding class
+        # (l, D)[0] with its first curve.
         CandidateIsogenyClass[ (l, D) ] = [[E]]
         elapsed = time.time() - t0
         print(f"Using curve #{curve_number} to seed class ({l},{D})[0]. Elapsed: {elapsed:.3f}s", flush=True)
