@@ -14,10 +14,12 @@ heavenly_count := 0;
 
 for Dlnkey in sorted_keys do
     l := Dlnkey[1];
+    l_string := IntegerToString(l);
     D := Dlnkey[2];
+D_string := IntegerToString(D);
     n := Dlnkey[3];
     isog_label := "C(" cat IntegerToString(l) cat ", " cat IntegerToString(D) cat ")." cat IntegerToString(n);
-    printf ">>>>> Candidate class %o:\n", isog_label;
+printf ">>>>> Candidate class %o:    [%o curves total] \n", isog_label, #data[Dlnkey][2];
 
     /* Construct minpoly and then the number field K = Q(a)... */
     minpoly_coeffs := data[Dlnkey][1];
