@@ -10,18 +10,24 @@ load "heavenly-candidates-complete.m";
 QT<T> := PolynomialRing(Rationals());
 
 sorted_keys := Sort(SetToSequence(Keys(data)));
+heavenly_count := 0;
 
 for Dlnkey in sorted_keys do
-    D := Dlnkey[1];
-    l := Dlnkey[2];
+    l := Dlnkey[1];
+    D := Dlnkey[2];
     n := Dlnkey[3];
-    isog_label := "C(" cat IntegerToString(D) cat ", " cat IntegerToString(l) cat ")." cat IntegerToString(n);
-    printf ">>>>> Candidate class %o...\n", isog_label;
+    isog_label := "C(" cat IntegerToString(l) cat ", " cat IntegerToString(D) cat ")." cat IntegerToString(n);
+    printf ">>>>> Candidate class %o:\n", isog_label;
 
     /* Construct minpoly and then the number field K = Q(a)... */
     minpoly_coeffs := data[Dlnkey][1];
     minpoly_K := QT ! minpoly_coeffs;
     K<a> := NumberField(minpoly_K);
+
+    /* MAGMA will express K elements in Kmu_l_rel_extn whether we 
+       want this behavior or not. We use a dummy ring with variable 'b'
+       just to get human-readable output. */
+    Dummy<b> := PolynomialRing(Integers());
 
     /* Since D and l are both currently fixed, we can go ahead and compute the 
        composite extension K(mu_\ell) */
@@ -45,23 +51,28 @@ for Dlnkey in sorted_keys do
     KX<X> := PolynomialRing(K);
 
     printf ">> Curves defined over K = Q(a), where a satisfies %o.\n", minpoly_K;
-    printf "      Delta(K/QQ) = %o \n", Discriminant(K);
-    printf "\n";
 
     ec_list := data[Dlnkey][2];
 
     for raw_ainvs in ec_list do
         ainvs := [];
+        dummy_ainvs_string := "";
         for raw_aj in raw_ainvs do
             Append(~ainvs, K ! raw_aj);
+            dummy_ainvs_string := dummy_ainvs_string cat Sprint(Dummy ! raw_aj) cat ", ";
         end for;
         E := EllipticCurve(ainvs);
+
         Delta_E := Discriminant(E);
         a_invs := aInvariants(E);
+
         prime_support := PrimeDivisors( Integers() ! Norm(Discriminant(E)));
-        if #prime_support gt 1 then
-            print "!!!!!!!! Seriously bogus curve! Bad primes are %o \n", prime_support;
-        end if;
+        /* if #prime_support gt 1 then
+            printf "*** Curve has bad reduction at %o \n", prime_support;
+            print "    Investigate further.";
+        end if; */
+
+        printf "Checking curve %o with bad reduction at %o \n", dummy_ainvs_string, prime_support;
 
         Phi := DivisionPolynomial(E, l);
         Phi_all_factors := Factorisation(Phi);
@@ -75,8 +86,6 @@ for Dlnkey in sorted_keys do
         /* Factorisation appears to sort factors by increasing degree
            but if there is a bottleneck it may be worth it to ensure
            Phi_factor is chosen of minimum possible degree */
-
-        // printf "Working with factor %o ...\n", leading_terms;
 
         /* We look for roots of Phi_factor over K(mu_l) */
         div_poly_roots := Roots(Phi_factor, Kmu_l_rel_extn);
@@ -123,18 +132,22 @@ for Dlnkey in sorted_keys do
                 lP0 := l * P0;
 
                 if IsZero(lP0) then
-                    /* For just reporting a torsion point a complex
-                       approximation should suffice. */
-                    
-                    printf "E[l](K(mu_l)) contains (x0,y0) with x0 ~ %o \n", Conjugates(P0[1] : Precision := 12)[1];
+                    print " ";
+                    printf "    >> %o-torsion point found: P = %o", l, P0;
+                    print " ";
+                    printf "    >> E[%o](K(mu_%o)) is nontrivial hence E heavenly at l = %o.", l, l, l;
+                    heavenly_count := heavenly_count + 1;
                 else
-                    print "Something is seriously wrong; l*P0 != O...";
+                    printf "    >> Something is seriously wrong; %o*P0 != O...", l;
                 end if;
 
             else
                 /* y_disc was not a square, so no torsion point found. */
-                print ">> FAILS. No l-torsion point found over K(mu_l).";                
+                printf "    >> E(K(mu_%o)) = {O}, E is not heavenly.", l;
             end if;
+            print " ";
         end if;
     end for;
 end for;
+
+printf "Found %o distinct heavenly pairs (E, l) with E heavenly at l. \n", heavenly_count;
