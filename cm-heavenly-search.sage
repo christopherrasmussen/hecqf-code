@@ -9,6 +9,8 @@ Code to exhaustively search for triples (K, [E]_K, l), where:
 REFERENCE: "Heavenly elliptic curves over quadratic fields,"
            https://arxiv.org/pdf/2410.18389
 
+Public Repository: https://github.com/christopherrasmussen/hecqf-code
+
 AUTHORS: Cam McLeman (University of Michigan-Flint) and Christopher Rasmussen (Wesleyan University)
 
 Comments welcome: crasmussen 'typical email symbol' wesleyan 'typical email punctuation' edu
@@ -58,7 +60,6 @@ def reduce_discriminant_by_qtwist(E0, l):
 
     # Note that the code relies on the fact that we will only see fields K with class number 1;
     # any generalization of this code may need to factor the minimal discriminant ideal instead.
-
     for pp, val in E.discriminant().factor():
         # We exclude primes pp that are allowed to be bad:
         if pp not in allowed_bad_primes:
@@ -78,65 +79,6 @@ def reduce_discriminant_by_qtwist(E0, l):
     # every prime was allowed to be bad, so this candidate works
     twist_flag = True
     return (twist_flag, E1)
-
-def quadratic_Sunit_list(E_input):
-    # given an elliptic curve whose conductor has rational support over a set like {2, l},
-    # where l is a prime divding 2m, and L = QQ(rt-m) is the CM field, find a list of
-    # primes in K that we should consider twisting over
-    cm_disc = E_input.cm_discriminant()
-    K = E_input.base_ring()
-    OK = K.ring_of_integers()
-    NE_times_DeltaL = 2 * cm_disc * E_input.conductor()
-    S_QQ = [p for p, val in NE_times_DeltaL.norm().factor()]
-    S = []
-    for p in S_QQ:
-        for pp, val in (p*OK).factor():
-            if pp not in S:
-                S.append(pp)
-    return S
-
-def is_pair_isogenous(E1, l1, E2, l2):
-    r'''
-    INPUT: E1, l1, E2, L2, where
-       -- E1 is an elliptic curve good outside l1
-       -- E2 is an elliptic curve good outside l2
-    OUTPUT: flag, where
-       -- flag == True if the following three conditions are all met:
-             -- l1 == l2
-             -- E1.base_ring() is isomorphic to E2.base_ring()
-             -- E1 is isogenous to E2 over the common base field
-       -- flage == False in any other case.'''
-
-    # check the primes of bad reduction
-    if l1 != l2:
-        return False
-    l = l1
-
-    # primes match, so compare base fields
-
-    K1 = E1.base_ring()
-    K2 = E2.base_ring()
-    if not K1.is_isomorphic(K2):
-        return False
-
-    # fields of definition match agree. A necessary condition for E1/K and E2/K
-    # to be K-isogenous is that the CM fields for E1 and E2 agree. This is a
-    # much faster check than looking for an isogeny, so we screen against this
-    # first.
-
-    L1 = QuadraticField(E1.cm_discriminant())
-    L2 = QuadraticField(E2.cm_discriminant())
-
-    if not L1.is_isomorphic(L2):
-        return False
-
-    # Now that E1 and E2 have the CM field, all we can do is check for
-    # an isogeny.
-
-    if E1.is_isogenous(E2):
-        return True
-    else:
-        return False
 
 # The calculation, especially the sort into isogeny classes, is
 # quite lengthy. Progress is written to the text file
@@ -298,15 +240,14 @@ def is_pair_isogenous(E1, l1, E2, l2):
 #    HeavenlyCandidates into isogeny classes. The final
 #    part of the code distributes the candidate curves
 #    into a dictionary CandidateIsogenyClass, whose
-#    keys all have the form (D, l, n), where
+#    keys all have the form (l, D), where
 #
-#    -- D = absolute discriminant of K
 #    -- l = prime at which curves could be heavenly
-#    -- n = a positive integer used to distinguish
-#           classes which have the same D and l
+#    -- D = absolute discriminant of K
 #
-#    CandidateIsogenyClass[ (D, l, n) ] is a list of
-#    elliptic curves. Each curve is defined over K, the
+#    CandidateIsogenyClass[ (l, D) ] is a list of
+#    lists of elliptic curves; each individual list
+#    is an isogeny class. Each curve is defined over K, the
 #    unique real quadratic field of absolute discriminant D,
 #    and has good reduction away from l. Two curves E and E'
 #    are isogenous over their common base field if and only
@@ -316,8 +257,7 @@ def is_pair_isogenous(E1, l1, E2, l2):
 #    a MAGMA script to test whether or not the curve, and
 #    hence all curves from the same isogeny class, are
 #    heavenly at l.
-#
-#
+
 # Experimentally, default stack size is not sufficient
 pari.allocatemem(10**8, 8*10**9)
 
@@ -330,7 +270,7 @@ CM2 = [2, 3, 5, 6, 7, 13, 17, 21, 29, 33, 37, 41, 61, 89]
 #            over a number field, Harris Daniels and Álvaro Lozano-Robledo,
 #            J. Number Theory 157 (2015) 367--396.
 
-# We create a list of discrminants from CM2:
+# We create a list of discriminants from CM2:
 
 CM2_disc = []
 for D in CM2:
@@ -396,7 +336,7 @@ for E in SeedCurves:
         # there is no hope of finding a twist with good
         # reduction away from a single prime. This case
         # may be skipped.
-        None
+        pass
     elif len(RamQ) == 1:
         # The ramification of KL/K takes place entirely
         # over the single rational prime l.
@@ -428,7 +368,7 @@ for E in SeedCurves:
             CandidatePairs.append( (E, l) )
 
 elapsed = time.time() - next_lap
-print(f"Candidate pairs identified. Elapsed time {elapsed:.3f}s", flush=True)
+print(f"Candidate pairs identified. Elapsed time {elapsed:.3f}s.", flush=True)
 
 # We have concluded Steps 2 and 3; the list CandidatePairs contains
 # every pair that must be passed to Step 4.
@@ -455,62 +395,100 @@ HeavenlyCandidates = []
 
 for E, l in TwistedCandidatePairs:
     K = E.base_ring()
-    S_E = [pp for pp, val in E.discriminant().factor()]
+    bad_ideal = K.fractional_ideal( 2*l )
+    S_E = [pp for pp, val in bad_ideal.factor()]
     OKSx = K.S_unit_group(S=S_E)
     twist_values = []
-    B = [ K(u) for u in OKSx.gens()]
-    for subcollection in Subsets(B).list():
+    B = [ K(u) for u in OKSx.gens() ]
+    for subcollection in Subsets(B):
         twist_val = prod(u for u in subcollection)
         twist_values.append( twist_val )
     for twist_val in twist_values:
         Enew = E.quadratic_twist( twist_val ).global_minimal_model()
         Snew = [p for p, val in Enew.conductor().norm().factor()]
-        if len(Snew) <= 1:
-            HeavenlyCandidates.append( (Enew, l) )
+        if len(Snew) == 1:
+            # The old l might not be the correct l; the single
+            # prime in Snew is the prime we should record.
+            HeavenlyCandidates.append( (Enew, Snew[0]) )
+        elif len(Snew) == 0:
+            # in this case, all prime isogeny degrees should be
+            # considered again.
+            prime_isog_degrees = []
+            for phi in E.isogenies_prime_degree():
+                l_phi = phi.degree()
+                if l_phi not in prime_isog_degrees:
+                    prime_isog_degrees.append( l_phi )
+            prime_isog_degrees.sort()
+            for l_phi in prime_isog_degrees:
+                HeavenlyCandidates.append( (Enew, l_phi) )
+
 elapsed = time.time() - next_lap
 print(f"Heavenly candidates identified. Elapsed time {elapsed:.3f}s.", flush=True)
 
 CandidateIsogenyClass = {}
-# keys for this dictionary will have the form (D, l, n), where
-#     -- D is the absolute discriminant of K/Q (and this uniquely identifies K)
+# keys for this dictionary will have the form (l, D), where
 #     -- l is a rational prime where E could be heavenly
-#     -- n is a natural number distinguishing classes where D and l are the same
-# two curves in CandidateIsogenyClasses[ (D, l, n) ] will definitely be isogenous over K
-# two curves in distinct lists indexed by (D, l, m) and (D, l, n) with m != n
-# are definitely *not* isogenous over K.
+#     -- D is the absolute discriminant of K/Q (and this uniquely identifies K)
+# the value of CandidateIsogenyClass[ (l, D) ] is a list of lists, so that
+# all curves in CandidateIsogenyClass[ (l, D) ][n] are pairwise isogenous, but also
+# pairwise nonisomorphic.
 
-curve_count = 0
-isog_class_count = 0
-for (E,l) in HeavenlyCandidates:
-    curve_count += 1
+def attempt_insertion(E, current_isog_class):
+    # determines whether E belongs to current_isog_class.
+    # if NO: return False
+    if not E.is_isogenous(current_isog_class[0]):
+        return False
+    # Curve *is* isogenous. Is E isomorphic to something
+    # already listed in current_isog_class?
+    for E0 in current_isog_class:
+        if E.is_isomorphic(E0):
+            # yes, it is redundant. Report the curve is
+            # isogenous, but do not add it to the class.
+            return True
+    # did not find an isomorphic curve. We append this to
+    # current_isog_class -- Python will make this change
+    # to the *input* list, so we do not need to return
+    # a copy.
+    current_isog_class.append(E)
+    return True
+
+curve_number = 0
+for E, l in HeavenlyCandidates:
+    t0 = time.time()
     # There appear to be some pari and/or SAGE issues that cause memory errors.
     # When the used portion of the stack gets too large, we reset:
     if pari.getstack() > pari.stacksize() // 5:
         print("Clearing the PARI mechanism...", flush=True)
         pari.allocatemem(pari.stacksize(), pari.stacksizemax(), silent=True)
-
     D = E.base_ring().discriminant()
-    n = 1
-    found_isogeny_class = False
-    while (D, l, n) in CandidateIsogenyClass:
-        # (D,l,n) will only exist as a key if CandidateIsogenyClass[ (D,l,n) ] is nonempty
-        # We grab the first curve in this isogeny class for comparison; we also time
-        # the calculation.
-        E0 = CandidateIsogenyClass[ (D, l, n) ][0]
-        t0 = time.time()
-        result = is_pair_isogenous(E, l, E0, l)
+    # sanity check: we expect E to have good reduction away from l at this point,
+    # and so we double check.
+    S_E = [p for p, val in E.conductor().norm().factor() if p != l]
+    if S_E: # True iff S_E nonempty
+        print(f"!!!!!!!!!! Curve is {E}, l is {l}, but E is also bad at {S_E}.", flush=True)
+    if (l, D) not in CandidateIsogenyClass:
+        # this is the first curve for (l, D), and we start a new class with it.
+        # (Note the double list [[E]]; this is intentional; we are seeding class
+        # (l, D)[0] with its first curve.)
+        CandidateIsogenyClass[ (l, D) ] = [[E]]
         elapsed = time.time() - t0
-        if result:
-            CandidateIsogenyClass[ (D, l, n) ].append(E)
-            print(f" Curve #{curve_count} lies in class ({D},{l},{n}) -- isogeny took {elapsed:.3f}s to confirm.", flush=True)
-            found_isogeny_class = True
-            break
-        n += 1
-    if not found_isogeny_class:
-        CandidateIsogenyClass[ (D, l, n) ] = [E]
-        isog_class_count += 1
-        # Also, since we just started a new isogeny class, let's report on our progress.
-        print( f"Isogeny class #{str(isog_class_count).zfill(2)}, labeled ({D},{l},{n}), seeded with curve #{str(curve_count).zfill(3)}.", flush=True)
+        print(f"Using curve #{curve_number} to seed class ({l},{D})[0]. Elapsed: {elapsed:.3f}s", flush=True)
+    else:
+        # (l, D) does exist, and we will loop over just that list of isogeny classes
+        placed_in_class = False
+        for n, isog_class in enumerate(CandidateIsogenyClass[ (l, D) ]):
+            if attempt_insertion(E, isog_class):
+                placed_in_class = True
+                elapsed = time.time() - t0
+                print(f"Placed curve #{curve_number} into class ({l}, {D})[{n}]. Class is now size {len(isog_class)}. Elapsed: {elapsed:.3f}s", flush=True)
+                break
+        if not placed_in_class:
+            # This curve should begin a new isogeny class.
+            # lists start with position 0, so current length is the *new* isog class counter.
+            elapsed = time.time() - t0
+            print(f"Using curve #{curve_number} to seed new class ({l}, {D})[{len(CandidateIsogenyClass[ (l, D) ])}]. Elapsed: {elapsed:.3f}s", flush=True)
+            CandidateIsogenyClass[ (l, D) ].append([E])
+    curve_number += 1
 
 # once calculation is complete, we write a list of all isogeny classes to file
 #
@@ -518,9 +496,9 @@ for (E,l) in HeavenlyCandidates:
 #
 # for later use. Each line has the form
 #
-#    [D, l, n, mK, ec_ainv_list], where
+#    [l, D, n, mK, ec_ainv_list], where
 #
-#    -- (D, l, n) is the isogeny class label
+#    -- (l, D, n) is the isogeny class label (starting at n=0)
 #    -- K = QQ(a) = unique real quadratic field of absolute discriminant D
 #    -- mK is a minimal polynomial for a (recorded in indeterminate 'T')
 #    -- ec_ainv_list is a list of lists
@@ -529,14 +507,15 @@ for (E,l) in HeavenlyCandidates:
 #             gives the K-rational a-invariants for an elliptic curve in the isogeny class.
 
 with open('heavenly-candidates-complete.sage', 'w') as f_sage:
-    for (D, l, n), curves in CandidateIsogenyClass.items():
-        K = curves[0].base_ring()
+    for (l, D), isog_classes in CandidateIsogenyClass.items():
+        K = isog_classes[0][0].base_ring()
         mK = K.defining_polynomial()
-        ec_ainv_list = []
-        for E in curves:
-            ainv_list = [list(K(ai).vector()) for ai in E.a_invariants()]
-            ec_ainv_list.append(ainv_list)
-        f_sage.write(f"{[D, l, n, mK, ec_ainv_list]}\n")
+        for n, curves in enumerate(isog_classes):
+            ec_ainv_list = []
+            for E in curves:
+                ainv_list = [ list(K(ai).vector()) for ai in E.a_invariants()]
+                ec_ainv_list.append(ainv_list)
+            f_sage.write(f"{[l, D, n, mK, ec_ainv_list]}\n")
 
 # We also write the output to a MAGMA file, since the calculation
 # to check whether E is heavenly at l will be done in MAGMA, not sage.
@@ -546,7 +525,7 @@ with open('heavenly-candidates-complete.sage', 'w') as f_sage:
 #
 # in the present directory. Loading and executing this MAGMA code
 # will construct an associative array (i.e., dictionary), "data",
-# whose keys are lists [D, l, n] and whose value is a tuple
+# whose keys are lists [l, D, n] and whose value is a tuple
 #
 # < mK_coeffs, list_of_ainvs >
 #
@@ -555,15 +534,19 @@ with open('heavenly-candidates-complete.sage', 'w') as f_sage:
 # where the a-invariants aj = aj1 + aj2 * a
 
 with open('heavenly-candidates-complete.m', 'w') as f_magma:
-    f_magma.write("data := AssociativeArray();\n\n")
-    for (D, l, n), curves in CandidateIsogenyClass.items():
-        K = curves[0].base_ring()
+    f_magma.write("data := AssociativeArray(); \n\n")
+    for (l, D), isog_classes in CandidateIsogenyClass.items():
+        K = isog_classes[0][0].base_ring()
         mK = K.defining_polynomial()
-        key = f"[{D}, {l}, {n}]"
-        f_magma.write(f"data[{key}] := <{list(mK)}, [\n")
-        for i, E in enumerate(curves):
-            ainv_list = [list(K(ai).vector()) for ai in E.a_invariants()]
-            cstr = ", ".join(f"[{c[0]}, {c[1]}]" for c in ainv_list)
-            comma = "," if i < len(curves) - 1 else ""
-            f_magma.write(f"  [{cstr}]{comma}\n")
-        f_magma.write(f"]>;\n\n")
+        for n, curves in enumerate(isog_classes):
+            key = f"[{l}, {D}, {n}]"
+            f_magma.write(f"data[{key}] := <{list(mK)}, [\n")
+            for i, E in enumerate(curves):
+                ainv_list = [list(K(ai).vector()) for ai in E.a_invariants()]
+                cstr = ", ".join(f"[{c[0]}, {c[1]}]" for c in ainv_list)
+                comma = "," if i < len(curves) - 1 else ""
+                f_magma.write(f"  [{cstr}]{comma}\n")
+            f_magma.write(f"]>;\n\n")
+
+final_time = true_start - time.time()
+print(f"Execution complete. Total time {final_time:.3f} seconds.")
