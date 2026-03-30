@@ -10,7 +10,9 @@ Code accompanying the paper [MR24]:
 This repository contains scripts for three calculations that support results appearing in [MR24].
 
 * `balanced-filter.sage`: The balanced bound B(n,g) is shown to satisfy $B(2,1) < 1.68 \times 10^{7}$ in Corollary 5.3 of [MR24], but may be reduced to $B(2,1) \leq 19$ by a computational verification. The existence of a heavenly elliptic curve $E/K$ which is not balanced implies the Tate-Oort numbers $(j_{1}, j_{2})$ satisfy $j_{1} + j_{2} = e$ and the congruence (5.5):
+
 $$\tau_{e} - q^{j_{1}} - q^{j_{2}} \equiv 0 \pmod{\ell}$$
+
 Here, $\mathfrak{p}$ is a prime of $K$ dividing $p$, a rational prime, $q = \mathbf{N}\mathfrak{p} = p^{f}$, and $\tau_{e}$ is the trace of Frobenius for $\mathfrak{p}^{e}$. The crucial observation is that (5.5) must hold for every $\mathfrak{p} \nmid \ell$. Taking $p = 2$ and factoring $M$ for every possible choice of $f$ and $\tau_{e}$, we obtain a finite set of possible *unbalanced* $\ell$. The script then checks the congruence (5.5) against primes $2 < p \leq 11$, removing any primes $\ell$ that fail to satisfy (5.5) for all $p$ *with the same $(j_{1}, j_{2})$ for each $p$*.
 
 * `cm-heavenly-search.sage`: A SageMath script that exhaustively searches for candidate heavenly elliptic curves. The output is a provably complete list of triples $(K, [E]_{K}, \ell)$ that necessarily contains all possible heavenly CM curves (up to $K$-isomorphism). As explained in [MR24], curves with $\mathbf{Q}$-rational $j$-invariant are excluded. A detailed explanation of the algorithm is given in [MR24, Sec. 7], as well as in the comments of the `.sage` file itself. Curves found with this program are only *candidates*. They may or may not actually be heavenly; this question is answered by the third script. Candidate curves are recorded in files `heavenly-candidates-complete.sage` and `heavenly-candidates-complete.m` for further use in `SageMath` or `MAGMA`, respectively.
