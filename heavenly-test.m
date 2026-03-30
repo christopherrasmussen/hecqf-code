@@ -15,11 +15,15 @@ heavenly_count := 0;
 for Dlnkey in sorted_keys do
     l := Dlnkey[1];
     l_string := IntegerToString(l);
+    
     D := Dlnkey[2];
-D_string := IntegerToString(D);
+    D_string := IntegerToString(D);
+    
     n := Dlnkey[3];
-    isog_label := "C(" cat IntegerToString(l) cat ", " cat IntegerToString(D) cat ")." cat IntegerToString(n);
-printf ">>>>> Candidate class %o:    [%o curves total] \n", isog_label, #data[Dlnkey][2];
+    n_string := IntegerToString(n);
+
+    isog_label := "C(" cat l_string cat ", " cat D_string cat ")." cat n_string;
+    printf ">>>>> Candidate class %o:    [%o curves total] \n", isog_label, #data[Dlnkey][2];
 
     /* Construct minpoly and then the number field K = Q(a)... */
     minpoly_coeffs := data[Dlnkey][1];
@@ -52,7 +56,8 @@ printf ">>>>> Candidate class %o:    [%o curves total] \n", isog_label, #data[Dl
     /* We want a polynomial ring over K available */
     KX<X> := PolynomialRing(K);
 
-    printf ">> Curves defined over K = Q(a), where a satisfies %o.\n", minpoly_K;
+    printf "   >> Curves defined over K = Q(b), where b satisfies %o.\n", minpoly_K;
+    printf "\n";
 
     ec_list := data[Dlnkey][2];
 
