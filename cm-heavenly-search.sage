@@ -3,7 +3,7 @@ Code to exhaustively search for triples (K, [E]_K, l), where:
 
     - l is a rational prime,
     - K is a quadratic field,
-    - E/K is a CM elliptic curve, heavenly at l,
+    - E/K is a CM elliptic curve, with good reduction outside l,
     - j(E) not in QQ.
 
 REFERENCE: "Heavenly elliptic curves over quadratic fields,"
@@ -86,16 +86,15 @@ def reduce_discriminant_by_qtwist(E0, l):
 # execute this code, while writing progress to output.log:
 #
 #### Jupyter cell (watch output.log after execute)
-# import sys
-# sys.stdout = open("output.log", "w")
-# load("cm-heavenly-search.sage")
+#### import sys
+#### sys.stdout = open("output.log", "w")
+#### load("cm-heavenly-search.sage")
 # 
 # When the code completes, it writes relevant data to two
 # files in the current directory:
 #
 # heavenly-candidates-complete.sage
 # heavenly-candidates-complete.m
-#
 #
 # The same data is written to both files; the .sage file is readable
 # by SageMath, the .m file is readable by MAGMA 
@@ -134,8 +133,8 @@ def reduce_discriminant_by_qtwist(E0, l):
 #    in L. If pp is a prime of K where E/K has good reduction,
 #    then pp must be unramified in the extension KL/K.
 #
-#    (Because the field K = QQ(j(E)) must be real quadratic,
-#    the hypothesis ``K not contained in L'' always holds.)
+#    Because the field K = QQ(j(E)) must be real quadratic,
+#    the hypothesis ``K not contained in L'' always holds.
 #
 #    For each curve E/K from the list of 58 curves, we
 #    calculate the ramification of KL/K, or rather its
@@ -158,10 +157,10 @@ def reduce_discriminant_by_qtwist(E0, l):
 #       proceed to Step 3.
 #
 # 3. Let Isog(E/K) be the set of rational primes l for which
-#    E admits a K-rational isogeny of degree l. (From the
+#    E admits a K-rational isogeny of degree l. From the
 #    structure theorem for heavenly abelian varieties, we may
 #    be sure that E has a K-rational isogeny of degree l if E
-#    is heavenly at l.) It is known that Isog(E/K) is a finite
+#    is heavenly at l. It is known that Isog(E/K) is a finite
 #    set. We calculate Isog(E/K) and then loop over the set:
 #
 #    -- For each l in Isog(E/K): Send (E, l) to Step 4.
@@ -555,5 +554,5 @@ with open('heavenly-candidates-complete.m', 'w') as f_magma:
                 f_magma.write(f"  [{cstr}]{comma}\n")
             f_magma.write(f"]>;\n\n")
 
-final_time = true_start - time.time()
+final_time = time.time() - true_start;
 print(f"Execution complete. Total time {final_time:.3f} seconds.")
