@@ -10,7 +10,9 @@ AUTHORS: Cam McLeman (University of Michigan-Flint) and Christopher Rasmussen (W
 Comments welcome: crasmussen 'typical email symbol' wesleyan 'typical email punctuation' edu
 """
 
-# We construct all possible Tate-Oort numbers (aka "j-vectors"):
+# We construct all possible "unbalanced" Tate-Oort numbers
+# (j1, j2) satisfying j1 + j2 == e and 0 <= j1 < j2 < e/2.
+# These are stored in poss_jvec.
 
 poss_jvec = []
 for e in [1, 2, 3, 4, 6, 8, 12]:
@@ -32,8 +34,9 @@ def possible_frob_trace(p, f):
 
 def trace_frob_power( trace_frob, pow, prime_norm ):
     r'''Suppose theta is a Frobenius element for a prime pp of
-        norm prime_norm, and that P(T) is the integer characteristic polynomial
-        for theta. Let alpha, beta be the complex roots of P(T), so that
+        norm prime_norm, and that P(T) is the integer characteristic
+        polynomial of theta. Let alpha, beta be the complex roots
+        of P(T), so that
 
         trace_frob = alpha + beta.
 
@@ -83,18 +86,6 @@ def alt_trace_frob_power( trace_frob, pow, prime_norm ):
         alpha = char_poly_over_K.roots()[0][0]
         beta = char_poly_over_K.roots()[1][0]
         return ZZ(alpha ** pow + beta ** pow)
-
-def tate_oort_trace( p, f, jvec ):
-    r'''Calculates the expected trace modulo ell for the e-th power of Frobenius when
-        the Tate-Oort numbers are in jvec. For a prime of norm q = p^f, this is the expression q^j1 + q^j2,
-        which (for a heavenly elliptic curve) must be congruent to the trace of the e-th power of Frobenius, modulo ell.'''
-    q = p ** f
-    if len(jvec) != 2:
-        raise Exception("jvec is not an acceptable vector of Tate-Oort numbers.")
-    j1, j2 = jvec
-    if j1 not in ZZ or j2 not in ZZ or j1 < 0 or j2 < 0:
-        raise Exception("Tate-Oort numbers must be nonnegative integers.")
-    return (q ** j1 + q ** j2)
 
 def initial_screen( jvec, p0 ):
     r'''Given Tate-Oort numbers (j1, j2), calculates a list of primes ell satisfying:
