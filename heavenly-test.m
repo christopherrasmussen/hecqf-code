@@ -12,6 +12,17 @@ QT<T> := PolynomialRing(Rationals());
 sorted_keys := Sort(SetToSequence(Keys(data)));
 heavenly_count := 0;
 
+if not assigned show_torsion then
+    show_torsion := "no";
+end if;
+
+if show_torsion ne "y" and show_torsion ne "yes" then
+    print "Printing torsion points is *off*.";
+    print "Run on CLI:    magma -b show_torsion:=y heavenly-test.m";
+    print "to include torsion points in output.";
+    print " ";
+end if;
+
 for Dlnkey in sorted_keys do
     l := Dlnkey[1];
     l_string := IntegerToString(l);
@@ -57,29 +68,27 @@ for Dlnkey in sorted_keys do
     KX<X> := PolynomialRing(K);
 
     printf "   >> Curves defined over K = Q(b), where b satisfies %o.\n", minpoly_K;
-    printf "\n";
 
     ec_list := data[Dlnkey][2];
 
     for raw_ainvs in ec_list do
         ainvs := [];
-        dummy_ainvs_string := "";
+        dummy_ainvs_string := "[";
         for raw_aj in raw_ainvs do
             Append(~ainvs, K ! raw_aj);
             dummy_ainvs_string := dummy_ainvs_string cat Sprint(Dummy ! raw_aj) cat ", ";
         end for;
+        dummy_ainvs_string := dummy_ainvs_string[1..#dummy_ainvs_string-2] cat "]";
         E := EllipticCurve(ainvs);
 
         Delta_E := Discriminant(E);
         a_invs := aInvariants(E);
 
         prime_support := PrimeDivisors( Integers() ! Norm(Discriminant(E)));
-        /* if #prime_support gt 1 then
-            printf "*** Curve has bad reduction at %o \n", prime_support;
-            print "    Investigate further.";
-        end if; */
-
-        printf "Checking curve %o with bad reduction at %o \n", dummy_ainvs_string, prime_support;
+  
+        printf "\n";
+        printf "    %o\n", dummy_ainvs_string;
+        printf "    Bad reduction at %o\n", prime_support;
 
         Phi := DivisionPolynomial(E, l);
         Phi_all_factors := Factorisation(Phi);
@@ -99,7 +108,8 @@ for Dlnkey in sorted_keys do
         
         if #div_poly_roots eq 0 then
             /* If Phi_factor has no roots, exit */
-            print "!!!!!!!!!!!!!!!!!!!!!! No roots of Phi_factor found.";
+            printf "    >> No root for %o-torsion polynomial found.\n", l;
+            printf "    >> E is not heavenly at l = %o.\n", l;
         else
             /* we grab the x-coordinate of a possible torsion point */
             x0 := div_poly_roots[1][1];
@@ -139,22 +149,26 @@ for Dlnkey in sorted_keys do
                 lP0 := l * P0;
 
                 if IsZero(lP0) then
-                    print " ";
-                    printf "    >> %o-torsion point found: P = %o", l, P0;
-                    print " ";
-                    printf "    >> E[%o](K(mu_%o)) is nontrivial hence E heavenly at l = %o.", l, l, l;
+                    if show_torsion eq "y" or show_torsion eq "yes" then
+                        printf "    >> %o-torsion point found.\n", l;
+                        printf "P = %o\n", P0;
+                    else
+                        printf "    >> %o-torsion point found.\n", l;
+                    end if;
+                    printf "    >> Heavenly at %o as E(Kmu_%o)[%o] != {O}.\n", l, l, l;
                     heavenly_count := heavenly_count + 1;
                 else
-                    printf "    >> Something is seriously wrong; %o*P0 != O...", l;
+                    printf "    >> Unexpected: %o*P0 != O...\n", l;
                 end if;
 
             else
                 /* y_disc was not a square, so no torsion point found. */
-                printf "    >> E(K(mu_%o)) = {O}, E is not heavenly.", l;
+                printf "    >> Phi_%o has roots but ydisc != square.\n", l;
+                printf "    >> E is not heavenly at l = %o.\n", l;
             end if;
-            print " ";
         end if;
     end for;
+    printf "\n";
 end for;
 
 printf "Found %o distinct heavenly pairs (E, l) with E heavenly at l. \n", heavenly_count;
