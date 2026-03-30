@@ -91,10 +91,10 @@ def initial_screen( jvec, p0 ):
     r'''Given Tate-Oort numbers (j1, j2), calculates a list of primes ell satisfying:
            * ell > 11
            * gcd(e, ell - 1) divides j1   (e = j1 + j2)
-           * there exists a prime pp of norm p0 or p0**2 such that
-               tau_e - q**j1 - q**j2 % ell == 0,
-             where q is the prime norm (i.e., p0 or p0**2), and tau_e is a possible integer
-             trace value for the eth power of frobenius at pp.
+           * (tau_e - q ** j1 - q ** j2) % ell == 0 for *at least one*
+             choice of q in [p, p**2] and some value tau_e
+             which is a valid Frobenius trace for a (hypothetical)
+             prime pp of norm q.
     '''
 
     poss_ell = []
@@ -102,10 +102,11 @@ def initial_screen( jvec, p0 ):
     for inertial_degree in [1, 2]:
         prime_norm = p0 ** inertial_degree
         for tau in possible_frob_trace( p0, inertial_degree ):
-            # The following if block is solely meant as a safety check for the trace of frobenius powers; one
-            # could comment out this block and likely get a much faster execution time. Since
-            # execution time is not an issue in this use case (abelian variety of dimension 1, field of definition of degree 2),
-            # we leave the safety check on.
+            # The following if block is solely meant as a safety check for the
+            # trace of frobenius powers; one could comment out this block and 
+            # likely get a much faster execution time. Since execution time
+            # is not an issue in this use case -- abelian variety of dimension 1,
+            # field of definition of degree 2 -- we leave the safety check in place.
             if trace_frob_power( tau, e, prime_norm) != alt_trace_frob_power( tau, e, prime_norm ):
                 print("ERROR CASE:", tau, e, prime_norm)
                 print("trace: ", trace_frob_power( tau, e, prime_norm), "\t alt_trace: ", alt_trace_frob_power( tau, e, prime_norm ))

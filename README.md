@@ -12,13 +12,7 @@ This repository contains scripts for three calculations that support results app
 1. `balanced-filter.sage`: The balanced bound B(n,g) is shown to satisfy $B(2,1) < 1.68 \times 10^{7}$ in Corollary 5.3 of [MR24], but may be reduced to $B(2,1) \leq 19$ by a computational verification. The existence of a heavenly elliptic curve $E/K$ which is not balanced implies the Tate-Oort numbers $(j_{1}, j_{2})$ satisfy $j_{1} + j_{2} = e$ and the congruence (5.5):
 $$M := \tau_{e} - q^{j_{1}} - q^{j_{2}} \equiv 0 \pmod{\ell}$$
 Here, $\mathfrak{p}$ is a prime of $K$ dividing $p$, a rational prime, $q = \mathbf{N}\mathfrak{p} = p^{f}$, and $\tau_{e}$ is the trace of Frobenius for $\mathfrak{p}^{e}$. The crucial observation is that (5.5) must hold for every $\mathfrak{p} \nmid \ell$. 
-
-Taking $p = 2$ and factoring $M$ for every possible choice of $f$ and $\tau_{e}$, we obtain a finite set of possible ``unbalanced'' $\ell$. The script then checks the congruence (5.5) against primes $2 < p \leq 11$, removing any primes $\ell$ that fail to satisfy (5.5) for all $p$ *with the same $(j_{1}, j_{2})$ for each $p$*.
-
-A SageMath script that screens
-   for primes ell > 11 where an unbalanced heavenly curve could exist. It
-   uses Frobenius trace congruences at small auxiliary primes to eliminate
-   most possibilities.
+Taking $p = 2$ and factoring $M$ for every possible choice of $f$ and $\tau_{e}$, we obtain a finite set of possible *unbalanced* $\ell$. The script then checks the congruence (5.5) against primes $2 < p \leq 11$, removing any primes $\ell$ that fail to satisfy (5.5) for all $p$ *with the same $(j_{1}, j_{2})$ for each $p$*.
 
 2. **CM heavenly search** (`cm-heavenly-search.sage`): A SageMath script that
    exhaustively searches for candidate heavenly elliptic curves. Starting
