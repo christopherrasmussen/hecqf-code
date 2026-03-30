@@ -1,8 +1,23 @@
-/* MAGMA script to read in candidate curves and test if they are heavenly */
+/* -------------------
+MAGMA script to read in data of elliptic curves E/K and test
+each curve as heavenly at l or not, by searching for an
+l-torsion point of E rational over K(mu_l).
 
-/* Block giving contact info and request for comments.
+REFERENCE: "Heavenly elliptic curves over quadratic fields,"
+           https://arxiv.org/pdf/2410.18389
 
-*/
+AUTHORS: Cam McLeman (University of Michigan-Flint) and Christopher Rasmussen (Wesleyan University)
+
+    We wish to acknowledge the generous insight of an anonymous referee,
+    who outlined this approach in MAGMA for the check of a torsion point.
+    Thank you!
+
+Verbose output that includes the explicit torsion point is possible:
+
+    ~ $ magma -b show_torsion:=y heavenly-test.m
+
+Comments welcome: crasmussen 'typical email symbol' wesleyan 'typical email punctuation' edu
+------------------- */
 
 // load in candidate curves as isogeny classes
 load "heavenly-candidates-complete.m";
@@ -20,6 +35,11 @@ if show_torsion ne "y" and show_torsion ne "yes" then
     print "Printing torsion points is *off*.";
     print "Run on CLI:    magma -b show_torsion:=y heavenly-test.m";
     print "to include torsion points in output.";
+    print " ";
+else
+    print "Printing torsion points is *ON*.";
+    print "In output, z is an l-th root of unity, so Q(mu_l) = Q(z),";
+    print "and xi is a generator for K(mu_l)/Q(mu_l), i.e., K(mu_l) = Q(z,xi).";
     print " ";
 end if;
 
