@@ -29,7 +29,7 @@ def possible_frob_trace(p, f):
         ZZ \cap [-2\sqrt{p^f}, 2\sqrt{p^f}].'''
 
     q = p ** f
-    extreme_frob_trace = 2 * q.isqrt()
+    extreme_frob_trace = floor(2 * q.sqrt())
     return list(range(-extreme_frob_trace, extreme_frob_trace + 1))
 
 def trace_frob_power( trace_frob, pow, prime_norm ):
