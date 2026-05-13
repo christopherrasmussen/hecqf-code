@@ -103,7 +103,7 @@ def initial_screen( jvec, p0 ):
         prime_norm = p0 ** inertial_degree
         for tau in possible_frob_trace( p0, inertial_degree ):
             # The following if block is solely meant as a safety check for the
-            # trace of frobenius powers; one could comment out this block and 
+            # trace of frobenius powers; one could comment out this block and
             # likely get a much faster execution time. Since execution time
             # is not an issue in this use case -- abelian variety of dimension 1,
             # field of definition of degree 2 -- we leave the safety check in place.
@@ -186,3 +186,84 @@ print("Tate-Oort Numbers  Possible ell > 11")
 print("-----------------  -----------------")
 for jvec in poss_ell_dict:
     print( str(jvec).rjust(13), "      ", poss_ell_dict[ jvec ] )
+
+# We are not done. Suppose pp0 is a prime ideal of K lying above the rational prime p0
+# with norm q0 = p0 ** f and p0 != ell. Let theta0 be a Frobenius element for pp0. Because
+# the hypothetical elliptic curve E/K is heavenly, it has an l-torsion Galois representation
+# of the form:
+#
+#    rho_{E,ell} : G_K --> [ \chi^{i1}     *     ]
+#                          [     0     \chi^{i2} ]
+#
+# where \chi is the mod-l cyclotomic character. For E/K to exist there must be a fixed choice
+# of Tate-Oort numbers (j1, j2) and a fixed pair of exponents (i1, i2) that satisfy all of
+# the following conditions:
+#
+#  (1)    e * ir == jr (mod (ell - 1))    for r = 1, 2
+#
+#  (2)    For every p0 != ell, there exists an f in [1, 2] and an integer tau (a possible Frobenius trace at p0) such that:
+#
+#         (a) |tau| \leq 2 * sqrt(p0 ** f)
+#         (b)    tau == (p0^f)^i1 + (p0^f)^i2   (mod ell)
+#         (c)  tau_e == (p0^f)^j1 + (p0^f)^j2   (mod ell)
+#
+#         Here, tau_e is the trace of the eth power of the same Frobenius element.
+#
+#  The point is that if (2) fails, then it is impossible for rho_{E,ell} to "behave correctly" if E is heavenly with
+#  Tate-Oort numbers j1, j2.
+#
+#  So we screen the remaining cases of (ell, (j1, j2)) against possible (i1, i2) by brute force.
+#
+#  A table is created for each remaining ell. Each row is indexed by a not-balanced (j1, j2)
+#  Each column is indexed by i1 for a possible pair of exponents (i1, i2). (Note that fixing i1 determines i2.)
+#  The entry in the cell for (j1, j2) and (i1, i2) is:
+#
+#  --      if the congruence (1) fails
+#  p0      if (2) fails for prime p0
+#  blank   if this pair (j1, j2) remains viable for a heavenly E/K.
+
+print(" ")
+print("Screening remaining unbalanced cases against individual (i1, i2)... ")
+print(" ")
+
+remaining_unbalanced_cases = {}
+
+remaining_cases = []
+for jvec in poss_ell_dict:
+    for ell in poss_ell_dict[jvec]:
+        if ell in remaining_unbalanced_cases:
+            remaining_unbalanced_cases[ ell ].append( jvec )
+        else:
+            remaining_unbalanced_cases[ ell ] = [ jvec ]
+
+for ell in remaining_unbalanced_cases:
+    print(f"*** ell = {ell} *** |   i1 of exponents (i1, i2) ")
+    table_header = "* ( j1, j2) *    | "
+    for i1 in [0..(ell-2)]:
+        table_header += " " + str(i1).rjust(2) + " "
+    print(table_header)
+    separator = (11 + 4*(ell-1) + 7)*"-"
+    print(separator)
+    for jvec in remaining_unbalanced_cases[ ell ]:
+        eliminated_flag = True
+        e = sum(jvec)
+        j1, j2 = jvec
+        table_row = "  ( "+str(j1).rjust(2)+", "+str(j2).rjust(2)+")      | "
+        for i1 in [0..ell-2]:
+            i2 = ell - i1
+            ivec = (i1, i2)
+            if (e*i1 - j1) % (ell-1) != 0:
+                table_row += " -- "
+            elif not compat_check(ell, 2, ivec, jvec):
+                table_row += "  2 "
+            elif not compat_check(ell, 3, ivec, jvec):
+                table_row += "  3 "
+            elif not compat_check(ell, 5, ivec, jvec):
+                table_row += "  5 "
+            else:
+                table_row += "    "
+                eliminated_flag = False
+        if eliminated_flag:
+            table_row += "Impossible"
+        print(table_row)
+    print(" ")
