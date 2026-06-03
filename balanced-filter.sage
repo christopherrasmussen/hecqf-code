@@ -173,6 +173,41 @@ for p0 in [3, 5, 7, 11]:
         else:
             del poss_ell_dict[ jvec ]
 
+def compat_check_fixed_f_fixed_tau(ell, p0, f, ivec, jvec, tau):
+    r'''Checks compatibility between a pair of heavenly exponents ivec and
+        a pair of Tate-Oort numbers jvec. Returns True if and only if:
+
+          - e * i[r] == j[r] (mod (ell-1)) for r = 0, 1,
+          - tau_e == q0 ** j[0] + q0 ** j[1] (mod ell),
+          -   tau == q0 ** i[0] + q0 ** i[1] (mod ell).'''
+    q0 = p0 ** f
+    e = sum(jvec)
+    for r in [0, 1]:
+        if (e*ivec[r] - jvec[r]) % (ell-1) != 0:
+            return False
+    tau_e = alt_trace_frob_power(tau, e, q0)
+    if (tau_e - q0 ** jvec[0] - q0 ** jvec[1]) % ell != 0:
+            return False
+    if (tau - q0 ** ivec[0] - q0 ** ivec[1]) % ell != 0:
+            return False
+    return True
+
+def compat_check_fixed_f(ell, p0, f, ivec, jvec):
+    r'''Returns True if there exists at least one tau for which
+        compat_check_fixed_f_fixed_tau returns True. Otherwise returns False.'''
+    for tau in possible_frob_trace(p0, f):
+        if compat_check_fixed_f_fixed_tau(ell, p0, f, ivec, jvec, tau):
+            return True
+    return False
+
+def compat_check(ell, p0, ivec, jvec):
+    r'''Returns True if there exists f in [1, 2] for which
+        compat_check_fixed_f returns True. Otherwise returnse False.'''
+    for f in [1, 2]:
+        if compat_check_fixed_f(ell, p0, f, ivec, jvec):
+            return True
+    return False
+            
 # Note that poss_ell_dict drops a key jvec if there are no possible ell > 11 left for jvec.
 #
 # Thus, the final status of poss_ell_dict is that its keys are Tate-Oort numbers that might
